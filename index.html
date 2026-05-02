@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Personal website of Hossein Hatami, a software engineering student from Tabriz."
+    />
+    <title>Hossein Hatami | Software Engineering</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2307090f'/%3E%3Cpath d='M16 44V20h7v9h18v-9h7v24h-7v-9H23v9z' fill='%2367e8f9'/%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div class="scene-backdrop" aria-hidden="true">
+      <canvas id="scene-canvas"></canvas>
+      <div class="webgl-fallback" id="webgl-fallback" role="img" aria-label="Abstract background">
+        <span></span>
+      </div>
+    </div>
+    <div class="scroll-progress" aria-hidden="true"><span></span></div>
+
+    <header class="site-header" aria-label="Primary navigation">
+      <nav class="nav-shell">
+        <a class="brand" href="#hero" aria-label="Hossein Hatami home">
+          <span class="brand-mark">HH</span>
+          <span>Hossein Hatami</span>
+        </a>
+
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+          aria-controls="primary-menu"
+        >
+          <i data-lucide="menu" aria-hidden="true"></i>
+        </button>
+
+        <ul class="nav-links" id="primary-menu">
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#tools">Tools</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero section-band" id="hero" aria-labelledby="hero-title">
+        <div class="hero-grid">
+          <div class="hero-copy reveal">
+            <p class="eyebrow">Professional Software Engineering Student</p>
+            <h1 id="hero-title">Hossein Hatami</h1>
+            <p class="role">Software developer, network manager, and Linux systems enthusiast.</p>
+            <p class="hero-text">
+              I am 21 years old, from Tabriz, and focused on web development, programming,
+              network management, Linux systems, and practical digital production.
+            </p>
+
+            <div class="hero-actions" aria-label="Profile links">
+              <a class="btn btn-primary" href="https://github.com/USERNAME" target="_blank" rel="noreferrer">
+                <i data-lucide="github" aria-hidden="true"></i>
+                <span>GitHub</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="hero-signal reveal" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section reveal" id="about" aria-labelledby="about-title">
+        <div class="section-heading">
+          <p class="eyebrow">About Me</p>
+          <h2 id="about-title">A mix of software, networking, Linux, and visual production.</h2>
+        </div>
+        <div class="about-panel glass-panel">
+          <p>
+            I started my path in software and continued growing through software engineering education.
+            I enjoy building clean digital experiences and working across code, systems, and infrastructure.
+          </p>
+          <p>
+            Alongside technical work, I also know graphic and video tools such as Photoshop and Premiere,
+            which helps me care about both implementation and final presentation.
+          </p>
+        </div>
+      </section>
+
+      <section class="content-section reveal" id="experience" aria-labelledby="experience-title">
+        <div class="section-heading">
+          <p class="eyebrow">Work Experience</p>
+          <h2 id="experience-title">Hands-on work across design, web, and networking.</h2>
+        </div>
+        <div class="timeline-grid">
+          <article class="timeline-card glass-panel">
+            <span>01</span>
+            <h3>Memento Studio</h3>
+            <p>I worked as a thumbnail designer, creating visual thumbnails for digital content.</p>
+          </article>
+          <article class="timeline-card glass-panel">
+            <span>02</span>
+            <h3>MoboNews</h3>
+            <p>I worked as a website designer, focusing on web page design and digital presentation.</p>
+          </article>
+          <article class="timeline-card glass-panel">
+            <span>03</span>
+            <h3>Respina</h3>
+            <p>I worked as a network manager, handling network-related tasks and technical operations.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="content-section reveal" id="education" aria-labelledby="education-title">
+        <div class="section-heading">
+          <p class="eyebrow">Education</p>
+          <h2 id="education-title">My academic path in software engineering.</h2>
+        </div>
+        <div class="timeline-grid">
+          <article class="timeline-card glass-panel">
+            <span>01</span>
+            <h3>Software Diploma</h3>
+            <p>I received my diploma in the software field, where my technical foundation began.</p>
+          </article>
+          <article class="timeline-card glass-panel">
+            <span>02</span>
+            <h3>Associate Degree in Software Engineering</h3>
+            <p>I completed my associate degree in software engineering.</p>
+          </article>
+          <article class="timeline-card glass-panel">
+            <span>03</span>
+            <h3>Bachelor's Degree in Professional Software Engineering</h3>
+            <p>I am currently studying for my bachelor's degree in professional software engineering.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="content-section reveal" id="skills" aria-labelledby="skills-title">
+        <div class="section-heading">
+          <p class="eyebrow">Skills</p>
+          <h2 id="skills-title">Languages and technologies I work with.</h2>
+        </div>
+        <div class="skills-grid">
+          <article class="skill-card glass-panel">
+            <i data-lucide="layout-template" aria-hidden="true"></i>
+            <h3>Frontend Web</h3>
+            <p>HTML, CSS, and JavaScript for fast, responsive, and editable web pages.</p>
+          </article>
+          <article class="skill-card glass-panel">
+            <i data-lucide="server-cog" aria-hidden="true"></i>
+            <h3>Programming & Backend</h3>
+            <p>PHP, C#, and Python for software development, scripting, and application logic.</p>
+          </article>
+          <article class="skill-card glass-panel">
+            <i data-lucide="network" aria-hidden="true"></i>
+            <h3>Networking & Linux</h3>
+            <p>Network management, Linux systems knowledge, and working with technical environments.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="content-section reveal" id="tools" aria-labelledby="tools-title">
+        <div class="section-heading">
+          <p class="eyebrow">Tools</p>
+          <h2 id="tools-title">Additional skills that help me deliver more complete work.</h2>
+        </div>
+        <div class="tools-panel glass-panel">
+          <div class="tool-pill">
+            <i data-lucide="terminal" aria-hidden="true"></i>
+            <span>Linux Systems</span>
+          </div>
+          <div class="tool-pill">
+            <i data-lucide="router" aria-hidden="true"></i>
+            <span>Network Management</span>
+          </div>
+          <div class="tool-pill">
+            <i data-lucide="image" aria-hidden="true"></i>
+            <span>Adobe Photoshop</span>
+          </div>
+          <div class="tool-pill">
+            <i data-lucide="film" aria-hidden="true"></i>
+            <span>Adobe Premiere</span>
+          </div>
+          <div class="tool-pill">
+            <i data-lucide="code-2" aria-hidden="true"></i>
+            <span>Software Engineering</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; <span id="year"></span> Hossein Hatami. Built with HTML, CSS, JavaScript, and Three.js.</p>
+    </footer>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script src="script.js" defer></script>
+  </body>
+</html>
