@@ -166,8 +166,8 @@ a {
 .nav-shell {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  gap: 0.6rem;
+  justify-content: space-between;
+  gap: 1rem;
   width: min(100%, var(--max-width));
   margin: 0 auto;
   padding: 0.72rem;
@@ -209,9 +209,16 @@ a {
   align-items: center;
   gap: 0.25rem;
   margin: 0;
-  margin-inline-start: auto;
+  margin-inline-start: 0;
   padding: 0;
   list-style: none;
+}
+
+.nav-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-inline-start: auto;
 }
 
 .nav-links a {
@@ -249,20 +256,19 @@ a {
 }
 
 .lang-toggle {
-  display: grid;
-  width: 2.75rem;
+  display: inline-grid;
+  width: 3.2rem;
   height: 2.5rem;
   place-items: center;
-  border: 1px solid transparent;
+  border: 1px solid var(--line);
   border-radius: var(--radius);
-  background:
-    linear-gradient(rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.035)) padding-box,
-    linear-gradient(135deg, rgba(103, 232, 249, 0.6), rgba(134, 239, 172, 0.32), rgba(253, 164, 175, 0.22)) border-box;
-  color: var(--text);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--soft);
   font-weight: 900;
   letter-spacing: 0.04em;
   cursor: pointer;
-  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.18);
+  overflow: hidden;
   transition:
     transform 180ms ease,
     border-color 180ms ease,
@@ -271,10 +277,60 @@ a {
     color 180ms ease;
 }
 
+.lang-pill {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: calc(100% - 0.35rem);
+  height: calc(100% - 0.35rem);
+  border-radius: calc(var(--radius) - 2px);
+  background:
+    radial-gradient(circle at 30% 30%, rgba(103, 232, 249, 0.22), transparent 58%),
+    radial-gradient(circle at 70% 70%, rgba(134, 239, 172, 0.18), transparent 62%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+}
+
+.lang-pill::after {
+  position: absolute;
+  inset: -40%;
+  content: "";
+  background: linear-gradient(120deg, transparent 45%, rgba(255, 255, 255, 0.22), transparent 55%);
+  transform: translateX(-18%);
+  opacity: 0;
+  transition: opacity 220ms ease, transform 380ms ease;
+}
+
+.lang-pill-label {
+  position: relative;
+  color: var(--text);
+  text-shadow: 0 10px 36px rgba(0, 0, 0, 0.55);
+}
+
 .lang-toggle:hover,
 .lang-toggle:focus-visible {
   transform: translateY(-1px);
-  box-shadow: 0 18px 56px rgba(103, 232, 249, 0.12);
+  border-color: rgba(103, 232, 249, 0.34);
+  box-shadow: 0 18px 56px rgba(103, 232, 249, 0.14);
+}
+
+.lang-toggle:hover .lang-pill::after,
+.lang-toggle:focus-visible .lang-pill::after {
+  opacity: 1;
+  transform: translateX(18%);
+}
+
+.lang-toggle:active {
+  transform: translateY(0);
+}
+
+/* Smooth language change (fade/slide) */
+[data-en][data-fa] {
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+html.lang-switching [data-en][data-fa] {
+  opacity: 0;
+  transform: translateY(4px);
 }
 
 .section-band,

@@ -47,29 +47,6 @@
           <span>Hossein Hatami</span>
         </a>
 
-        <button
-          class="lang-toggle"
-          type="button"
-          id="lang-toggle"
-          aria-label="Switch to Persian"
-          data-en-aria="Switch to Persian"
-          data-fa-aria="تغییر زبان به انگلیسی"
-        >
-          FA
-        </button>
-
-        <button
-          class="nav-toggle"
-          type="button"
-          aria-label="Toggle navigation menu"
-          data-en-aria="Toggle navigation menu"
-          data-fa-aria="باز/بسته کردن منو"
-          aria-expanded="false"
-          aria-controls="primary-menu"
-        >
-          <i data-lucide="menu" aria-hidden="true"></i>
-        </button>
-
         <ul class="nav-links" id="primary-menu">
           <li><a href="#about" data-en="About" data-fa="درباره">About</a></li>
           <li><a href="#experience" data-en="Experience" data-fa="تجربه">Experience</a></li>
@@ -78,6 +55,33 @@
           <li><a href="#tools" data-en="Tools" data-fa="ابزارها">Tools</a></li>
           <li><a href="#projects" data-en="Projects" data-fa="پروژه‌ها">Projects</a></li>
         </ul>
+
+        <div class="nav-actions">
+          <button
+            class="lang-toggle"
+            type="button"
+            id="lang-toggle"
+            aria-label="Switch to Persian"
+            data-en-aria="Switch to Persian"
+            data-fa-aria="تغییر زبان به انگلیسی"
+          >
+            <span class="lang-pill" aria-hidden="true">
+              <span class="lang-pill-label">FA</span>
+            </span>
+          </button>
+
+          <button
+            class="nav-toggle"
+            type="button"
+            aria-label="Toggle navigation menu"
+            data-en-aria="Toggle navigation menu"
+            data-fa-aria="باز/بسته کردن منو"
+            aria-expanded="false"
+            aria-controls="primary-menu"
+          >
+            <i data-lucide="menu" aria-hidden="true"></i>
+          </button>
+        </div>
       </nav>
     </header>
 

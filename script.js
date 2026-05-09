@@ -4,6 +4,7 @@ const navToggle = document.querySelector(".nav-toggle");
 const navLinks = document.querySelector(".nav-links");
 const year = document.querySelector("#year");
 const langToggle = document.querySelector("#lang-toggle");
+const langPillLabel = document.querySelector(".lang-pill-label");
 
 const pointer = { x: 0, y: 0 };
 let THREE;
@@ -53,7 +54,9 @@ function applyLanguage(lang) {
 
   if (langToggle) {
     // Show target language on the button.
-    langToggle.textContent = isFa ? "EN" : "FA";
+    if (langPillLabel) {
+      langPillLabel.textContent = isFa ? "EN" : "FA";
+    }
     const nextAria = isFa ? langToggle.getAttribute("data-fa-aria") : langToggle.getAttribute("data-en-aria");
     if (nextAria) {
       langToggle.setAttribute("aria-label", nextAria);
@@ -73,13 +76,26 @@ applyLanguage(initialLang);
 
 if (langToggle) {
   langToggle.addEventListener("click", () => {
-    const nextLang = document.documentElement.lang === "fa" ? "en" : "fa";
-    try {
-      localStorage.setItem("lang", nextLang);
-    } catch {
-      // Ignore storage failures (private mode / blocked storage).
+    if (document.documentElement.classList.contains("lang-switching")) {
+      return;
     }
-    applyLanguage(nextLang);
+
+    const nextLang = document.documentElement.lang === "fa" ? "en" : "fa";
+    document.documentElement.classList.add("lang-switching");
+
+    // Fade out then swap content, then fade back in.
+    window.setTimeout(() => {
+      try {
+        localStorage.setItem("lang", nextLang);
+      } catch {
+        // Ignore storage failures (private mode / blocked storage).
+      }
+      applyLanguage(nextLang);
+    }, 120);
+
+    window.setTimeout(() => {
+      document.documentElement.classList.remove("lang-switching");
+    }, 260);
   });
 }
 
