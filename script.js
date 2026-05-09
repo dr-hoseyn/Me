@@ -20,24 +20,28 @@ let targetScrollProgress = 0;
 let scrollVelocity = 0;
 let lastScrollY = window.scrollY;
 
-year.textContent = new Date().getFullYear();
+if (year) {
+  year.textContent = new Date().getFullYear();
+}
 
 if (window.lucide) {
   window.lucide.createIcons();
 }
 
 // Mobile navigation.
-navToggle.addEventListener("click", () => {
-  const isOpen = navLinks.classList.toggle("is-open");
-  navToggle.setAttribute("aria-expanded", String(isOpen));
-});
+if (navToggle && navLinks) {
+  navToggle.addEventListener("click", () => {
+    const isOpen = navLinks.classList.toggle("is-open");
+    navToggle.setAttribute("aria-expanded", String(isOpen));
+  });
 
-navLinks.addEventListener("click", (event) => {
-  if (event.target instanceof HTMLAnchorElement) {
-    navLinks.classList.remove("is-open");
-    navToggle.setAttribute("aria-expanded", "false");
-  }
-});
+  navLinks.addEventListener("click", (event) => {
+    if (event.target instanceof HTMLAnchorElement) {
+      navLinks.classList.remove("is-open");
+      navToggle.setAttribute("aria-expanded", "false");
+    }
+  });
+}
 
 // Scroll reveal animation. Content stays visible if JavaScript fails.
 const revealElements = document.querySelectorAll(".reveal");
@@ -79,7 +83,9 @@ const isMobile = window.matchMedia("(max-width: 720px)").matches;
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 if (!hasWebGL()) {
-  visual.classList.add("is-fallback");
+  if (visual) {
+    visual.classList.add("is-fallback");
+  }
 } else {
   loadThreeScene();
 }
@@ -110,7 +116,9 @@ async function loadThreeScene() {
     initScene();
   } catch (error) {
     console.warn("Three.js could not be loaded.", error);
-    visual.classList.add("is-fallback");
+    if (visual) {
+      visual.classList.add("is-fallback");
+    }
   } finally {
     isLoadingThree = false;
   }
@@ -273,6 +281,10 @@ function createParticles() {
 }
 
 function handleResize() {
+  if (!visual) {
+    return;
+  }
+
   const { width, height } = visual.getBoundingClientRect();
 
   renderer.setSize(width, height, false);
@@ -281,6 +293,10 @@ function handleResize() {
 }
 
 function handlePointerMove(event) {
+  if (!canvas) {
+    return;
+  }
+
   const rect = canvas.getBoundingClientRect();
   pointer.x = ((event.clientX - rect.left) / rect.width - 0.5) * 2;
   pointer.y = ((event.clientY - rect.top) / rect.height - 0.5) * 2;
@@ -347,6 +363,20 @@ function animate(time = 0) {
 
   renderer.render(scene, camera);
 }
+
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden) {
+    if (animationFrame) {
+      cancelAnimationFrame(animationFrame);
+      animationFrame = undefined;
+    }
+    return;
+  }
+
+  if (renderer && scene && camera) {
+    animate();
+  }
+});
 
 window.addEventListener("pagehide", () => {
   if (animationFrame) {
