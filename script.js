@@ -37,7 +37,10 @@ function applyLanguage(lang) {
   document.querySelectorAll("[data-en][data-fa]").forEach((node) => {
     const text = isFa ? node.getAttribute("data-fa") : node.getAttribute("data-en");
     if (text) {
-      node.textContent = text;
+      // Avoid wiping nested markup (icons, spans, etc.).
+      if (node.childElementCount === 0) {
+        node.textContent = text;
+      }
     }
   });
 
@@ -58,13 +61,24 @@ function applyLanguage(lang) {
   }
 }
 
-const initialLang = localStorage.getItem("lang") === "fa" ? "fa" : "en";
+let storedLang = "en";
+try {
+  storedLang = localStorage.getItem("lang") || "en";
+} catch {
+  storedLang = "en";
+}
+
+const initialLang = storedLang === "fa" ? "fa" : "en";
 applyLanguage(initialLang);
 
 if (langToggle) {
   langToggle.addEventListener("click", () => {
     const nextLang = document.documentElement.lang === "fa" ? "en" : "fa";
-    localStorage.setItem("lang", nextLang);
+    try {
+      localStorage.setItem("lang", nextLang);
+    } catch {
+      // Ignore storage failures (private mode / blocked storage).
+    }
     applyLanguage(nextLang);
   });
 }
