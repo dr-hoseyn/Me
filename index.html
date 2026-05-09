@@ -28,9 +28,7 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <a class="skip-link" href="#main" data-en="Skip to content" data-fa="رفتن به محتوای اصلی"
-      >Skip to content</a
-    >
+    <a class="skip-link" href="#main">Skip to content</a>
 
     <div class="scene-backdrop" aria-hidden="true">
       <canvas id="scene-canvas"></canvas>
@@ -42,40 +40,25 @@
 
     <header class="site-header" aria-label="Primary navigation">
       <nav class="nav-shell">
-        <a class="brand" href="#hero" aria-label="Hossein Hatami home" data-en-aria="Hossein Hatami home" data-fa-aria="صفحه اصلی حسین حاتمی">
+        <a class="brand" href="#hero" aria-label="Hossein Hatami home">
           <span class="brand-mark">HH</span>
           <span>Hossein Hatami</span>
         </a>
 
         <ul class="nav-links" id="primary-menu">
-          <li><a href="#about" data-en="About" data-fa="درباره">About</a></li>
-          <li><a href="#experience" data-en="Experience" data-fa="تجربه">Experience</a></li>
-          <li><a href="#education" data-en="Education" data-fa="تحصیلات">Education</a></li>
-          <li><a href="#skills" data-en="Skills" data-fa="مهارت‌ها">Skills</a></li>
-          <li><a href="#tools" data-en="Tools" data-fa="ابزارها">Tools</a></li>
-          <li><a href="#projects" data-en="Projects" data-fa="پروژه‌ها">Projects</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#tools">Tools</a></li>
+          <li><a href="#projects">Projects</a></li>
         </ul>
 
         <div class="nav-actions">
           <button
-            class="lang-toggle"
-            type="button"
-            id="lang-toggle"
-            aria-label="Switch to Persian"
-            data-en-aria="Switch to Persian"
-            data-fa-aria="تغییر زبان به انگلیسی"
-          >
-            <span class="lang-pill" aria-hidden="true">
-              <span class="lang-pill-label">FA</span>
-            </span>
-          </button>
-
-          <button
             class="nav-toggle"
             type="button"
             aria-label="Toggle navigation menu"
-            data-en-aria="Toggle navigation menu"
-            data-fa-aria="باز/بسته کردن منو"
             aria-expanded="false"
             aria-controls="primary-menu"
           >
@@ -89,31 +72,15 @@
       <section class="hero section-band" id="hero" aria-labelledby="hero-title">
         <div class="hero-grid">
           <div class="hero-copy reveal">
-            <p
-              class="eyebrow"
-              data-en="Professional Software Engineering Student"
-              data-fa="دانشجوی مهندسی نرم‌افزار"
-            >
-              Professional Software Engineering Student
-            </p>
+            <p class="eyebrow">Professional Software Engineering Student</p>
             <h1 id="hero-title">Hossein Hatami</h1>
-            <p
-              class="role"
-              data-en="Software developer, network manager, and Linux systems enthusiast."
-              data-fa="توسعه‌دهنده نرم‌افزار، مدیر شبکه و علاقه‌مند به لینوکس"
-            >
-              Software developer, network manager, and Linux systems enthusiast.
-            </p>
+            <p class="role">Software developer, network manager, and Linux systems enthusiast.</p>
             <p class="hero-text">
-              <span
-                data-en="I am from Tabriz and focused on web development, programming, network management, Linux systems, and practical digital production."
-                data-fa="از تبریز هستم و روی توسعه وب، برنامه‌نویسی، مدیریت شبکه، لینوکس و تولید محتوای دیجیتال تمرکز دارم."
-                >I am from Tabriz and focused on web development, programming, network management, Linux
-                systems, and practical digital production.</span
-              >
+              I am from Tabriz and focused on web development, programming, network management, Linux systems,
+              and practical digital production.
             </p>
 
-            <div class="hero-actions" aria-label="Profile links" data-en-aria="Profile links" data-fa-aria="لینک‌های پروفایل">
+            <div class="hero-actions" aria-label="Profile links">
               <a
                 class="btn btn-primary"
                 href="https://github.com/hossein-hatami"
@@ -136,193 +103,106 @@
 
       <section class="content-section reveal" id="about" aria-labelledby="about-title">
         <div class="section-heading">
-          <p class="eyebrow" data-en="About Me" data-fa="درباره من">About Me</p>
-          <h2
-            id="about-title"
-            data-en="A mix of software, networking, Linux, and visual production."
-            data-fa="ترکیبی از نرم‌افزار، شبکه، لینوکس و تولید محتوای بصری."
-          >
-            A mix of software, networking, Linux, and visual production.
-          </h2>
+          <p class="eyebrow">About Me</p>
+          <h2 id="about-title">A mix of software, networking, Linux, and visual production.</h2>
         </div>
         <div class="about-panel glass-panel">
           <p>
-            <span
-              data-en="I started my path in software and continued growing through software engineering education. I enjoy building clean digital experiences and working across code, systems, and infrastructure."
-              data-fa="مسیرم را از نرم‌افزار شروع کردم و با تحصیل در مهندسی نرم‌افزار ادامه دادم. از ساخت تجربه‌های دیجیتال تمیز و کار کردن در مرز بین کد، سیستم‌ها و زیرساخت لذت می‌برم."
-              >I started my path in software and continued growing through software engineering education. I
-              enjoy building clean digital experiences and working across code, systems, and infrastructure.</span
-            >
+            I started my path in software and continued growing through software engineering education. I enjoy
+            building clean digital experiences and working across code, systems, and infrastructure.
           </p>
           <p>
-            <span
-              data-en="Alongside technical work, I also know graphic and video tools such as Photoshop and Premiere, which helps me care about both implementation and final presentation."
-              data-fa="کنار کار فنی، با ابزارهای گرافیک و ویدئو مثل Photoshop و Premiere هم کار می‌کنم؛ این موضوع کمک می‌کند هم به پیاده‌سازی و هم به ارائه نهایی توجه داشته باشم."
-              >Alongside technical work, I also know graphic and video tools such as Photoshop and Premiere,
-              which helps me care about both implementation and final presentation.</span
-            >
+            Alongside technical work, I also know graphic and video tools such as Photoshop and Premiere, which
+            helps me care about both implementation and final presentation.
           </p>
         </div>
       </section>
 
       <section class="content-section reveal" id="experience" aria-labelledby="experience-title">
         <div class="section-heading">
-          <p class="eyebrow" data-en="Work Experience" data-fa="تجربه کاری">Work Experience</p>
-          <h2
-            id="experience-title"
-            data-en="Hands-on work across design, web, and networking."
-            data-fa="تجربه عملی در طراحی، وب و شبکه."
-          >
-            Hands-on work across design, web, and networking.
-          </h2>
+          <p class="eyebrow">Work Experience</p>
+          <h2 id="experience-title">Hands-on work across design, web, and networking.</h2>
         </div>
         <div class="timeline-grid">
           <article class="timeline-card glass-panel">
             <span>01</span>
             <h3>Memento Studio</h3>
-            <p
-              data-en="I worked as a thumbnail designer, creating visual thumbnails for digital content."
-              data-fa="به عنوان طراح Thumbnail فعالیت داشتم و برای محتوای دیجیتال طرح‌های تصویری تولید می‌کردم."
-            >
-              I worked as a thumbnail designer, creating visual thumbnails for digital content.
-            </p>
+            <p>I worked as a thumbnail designer, creating visual thumbnails for digital content.</p>
           </article>
           <article class="timeline-card glass-panel">
             <span>02</span>
             <h3>MoboNews</h3>
-            <p
-              data-en="I worked as a website designer, focusing on web page design and digital presentation."
-              data-fa="به عنوان طراح وب‌سایت کار کردم و روی طراحی صفحه‌ها و ارائه دیجیتال تمرکز داشتم."
-            >
-              I worked as a website designer, focusing on web page design and digital presentation.
-            </p>
+            <p>I worked as a website designer, focusing on web page design and digital presentation.</p>
           </article>
           <article class="timeline-card glass-panel">
             <span>03</span>
             <h3>Respina</h3>
-            <p
-              data-en="I worked as a network manager, handling network-related tasks and technical operations."
-              data-fa="به عنوان مدیر شبکه کار کردم و مسئولیت کارهای مرتبط با شبکه و عملیات فنی را برعهده داشتم."
-            >
-              I worked as a network manager, handling network-related tasks and technical operations.
-            </p>
+            <p>I worked as a network manager, handling network-related tasks and technical operations.</p>
           </article>
         </div>
       </section>
 
       <section class="content-section reveal" id="education" aria-labelledby="education-title">
         <div class="section-heading">
-          <p class="eyebrow" data-en="Education" data-fa="تحصیلات">Education</p>
-          <h2
-            id="education-title"
-            data-en="My academic path in software engineering."
-            data-fa="مسیر تحصیلی من در مهندسی نرم‌افزار."
-          >
-            My academic path in software engineering.
-          </h2>
+          <p class="eyebrow">Education</p>
+          <h2 id="education-title">My academic path in software engineering.</h2>
         </div>
         <div class="timeline-grid">
           <article class="timeline-card glass-panel">
             <span>01</span>
-            <h3 data-en="Software Diploma" data-fa="دیپلم نرم‌افزار">Software Diploma</h3>
-            <p
-              data-en="I received my diploma in the software field, where my technical foundation began."
-              data-fa="دیپلم را در رشته نرم‌افزار گرفتم و پایه فنی من از همین‌جا شکل گرفت."
-            >
-              I received my diploma in the software field, where my technical foundation began.
-            </p>
+            <h3>Software Diploma</h3>
+            <p>I received my diploma in the software field, where my technical foundation began.</p>
           </article>
           <article class="timeline-card glass-panel">
             <span>02</span>
-            <h3 data-en="Associate Degree in Software Engineering" data-fa="کاردانی مهندسی نرم‌افزار">
-              Associate Degree in Software Engineering
-            </h3>
-            <p data-en="I completed my associate degree in software engineering." data-fa="کاردانی مهندسی نرم‌افزار را به پایان رساندم.">
-              I completed my associate degree in software engineering.
-            </p>
+            <h3>Associate Degree in Software Engineering</h3>
+            <p>I completed my associate degree in software engineering.</p>
           </article>
           <article class="timeline-card glass-panel">
             <span>03</span>
-            <h3
-              data-en="Bachelor's Degree in Professional Software Engineering"
-              data-fa="کارشناسی مهندسی نرم‌افزار (حرفه‌ای)"
-            >
-              Bachelor's Degree in Professional Software Engineering
-            </h3>
-            <p
-              data-en="I am currently studying for my bachelor's degree in professional software engineering."
-              data-fa="در حال حاضر دانشجوی کارشناسی مهندسی نرم‌افزار (حرفه‌ای) هستم."
-            >
-              I am currently studying for my bachelor's degree in professional software engineering.
-            </p>
+            <h3>Bachelor's Degree in Professional Software Engineering</h3>
+            <p>I am currently studying for my bachelor's degree in professional software engineering.</p>
           </article>
         </div>
       </section>
 
       <section class="content-section reveal" id="skills" aria-labelledby="skills-title">
         <div class="section-heading">
-          <p class="eyebrow" data-en="Skills" data-fa="مهارت‌ها">Skills</p>
-          <h2
-            id="skills-title"
-            data-en="Languages and technologies I work with."
-            data-fa="زبان‌ها و فناوری‌هایی که با آن‌ها کار می‌کنم."
-          >
-            Languages and technologies I work with.
-          </h2>
+          <p class="eyebrow">Skills</p>
+          <h2 id="skills-title">Languages and technologies I work with.</h2>
         </div>
         <div class="skills-grid">
           <article class="skill-card glass-panel">
             <i data-lucide="layout-template" aria-hidden="true"></i>
-            <h3 data-en="Frontend Web" data-fa="وب فرانت‌اند">Frontend Web</h3>
-            <p
-              data-en="HTML, CSS, and JavaScript for fast, responsive, and editable web pages."
-              data-fa="HTML، CSS و JavaScript برای ساخت صفحه‌های سریع، ریسپانسیو و قابل ویرایش."
-            >
-              HTML, CSS, and JavaScript for fast, responsive, and editable web pages.
-            </p>
+            <h3>Frontend Web</h3>
+            <p>HTML, CSS, and JavaScript for fast, responsive, and editable web pages.</p>
           </article>
           <article class="skill-card glass-panel">
             <i data-lucide="server-cog" aria-hidden="true"></i>
-            <h3 data-en="Programming & Backend" data-fa="برنامه‌نویسی و بک‌اند">Programming & Backend</h3>
-            <p
-              data-en="PHP, C#, and Python for software development, scripting, and application logic."
-              data-fa="PHP، C# و Python برای توسعه نرم‌افزار، اسکریپت‌نویسی و منطق برنامه."
-            >
-              PHP, C#, and Python for software development, scripting, and application logic.
-            </p>
+            <h3>Programming & Backend</h3>
+            <p>PHP, C#, and Python for software development, scripting, and application logic.</p>
           </article>
           <article class="skill-card glass-panel">
             <i data-lucide="network" aria-hidden="true"></i>
-            <h3 data-en="Networking & Linux" data-fa="شبکه و لینوکس">Networking & Linux</h3>
-            <p
-              data-en="Network management, Linux systems knowledge, and working with technical environments."
-              data-fa="مدیریت شبکه، دانش سیستم‌های لینوکسی و کار با محیط‌های فنی."
-            >
-              Network management, Linux systems knowledge, and working with technical environments.
-            </p>
+            <h3>Networking & Linux</h3>
+            <p>Network management, Linux systems knowledge, and working with technical environments.</p>
           </article>
         </div>
       </section>
 
       <section class="content-section reveal" id="tools" aria-labelledby="tools-title">
         <div class="section-heading">
-          <p class="eyebrow" data-en="Tools" data-fa="ابزارها">Tools</p>
-          <h2
-            id="tools-title"
-            data-en="Additional skills that help me deliver more complete work."
-            data-fa="مهارت‌های تکمیلی که خروجی نهایی را کامل‌تر می‌کنند."
-          >
-            Additional skills that help me deliver more complete work.
-          </h2>
+          <p class="eyebrow">Tools</p>
+          <h2 id="tools-title">Additional skills that help me deliver more complete work.</h2>
         </div>
         <div class="tools-panel glass-panel">
           <div class="tool-pill">
             <i data-lucide="terminal" aria-hidden="true"></i>
-            <span data-en="Linux Systems" data-fa="سیستم‌های لینوکس">Linux Systems</span>
+            <span>Linux Systems</span>
           </div>
           <div class="tool-pill">
             <i data-lucide="router" aria-hidden="true"></i>
-            <span data-en="Network Management" data-fa="مدیریت شبکه">Network Management</span>
+            <span>Network Management</span>
           </div>
           <div class="tool-pill">
             <i data-lucide="image" aria-hidden="true"></i>
@@ -334,69 +214,48 @@
           </div>
           <div class="tool-pill">
             <i data-lucide="code-2" aria-hidden="true"></i>
-            <span data-en="Software Engineering" data-fa="مهندسی نرم‌افزار">Software Engineering</span>
+            <span>Software Engineering</span>
           </div>
         </div>
       </section>
 
       <section class="content-section reveal" id="projects" aria-labelledby="projects-title">
         <div class="section-heading">
-          <p class="eyebrow" data-en="Projects" data-fa="پروژه‌ها">Projects</p>
-          <h2
-            id="projects-title"
-            data-en="Samples that showcase my style and execution."
-            data-fa="نمونه کارهایی برای نمایش سبک و توانایی اجرا."
-          >
-            Samples that showcase my style and execution.
-          </h2>
+          <p class="eyebrow">Projects</p>
+          <h2 id="projects-title">Samples that showcase my style and execution.</h2>
         </div>
         <div class="projects-grid">
           <article class="project-card glass-panel">
             <div class="project-meta">
-              <span data-en="Web" data-fa="وب">Web</span>
+              <span>Web</span>
               <span>HTML/CSS/JS</span>
             </div>
-            <h3 data-en="Sample Project 1" data-fa="نمونه پروژه ۱">Sample Project 1</h3>
-            <p
-              data-en="A short summary of the project (goal, your role, and outcome)."
-              data-fa="یک توضیح کوتاه از پروژه (هدف، نقش شما و نتیجه)."
-            >
-              A short summary of the project (goal, your role, and outcome).
-            </p>
+            <h3>Sample Project 1</h3>
+            <p>A short summary of the project (goal, your role, and outcome).</p>
             <a href="https://github.com/hossein-hatami" target="_blank" rel="noopener noreferrer">
-              <span data-en="View" data-fa="مشاهده">View</span>
+              View
             </a>
           </article>
           <article class="project-card glass-panel">
             <div class="project-meta">
-              <span data-en="Networking" data-fa="شبکه">Networking</span>
+              <span>Networking</span>
               <span>Infra</span>
             </div>
-            <h3 data-en="Sample Project 2" data-fa="نمونه پروژه ۲">Sample Project 2</h3>
-            <p
-              data-en="A short summary of the project (challenges and results)."
-              data-fa="یک توضیح کوتاه از پروژه (چالش‌ها و خروجی)."
-            >
-              A short summary of the project (challenges and results).
-            </p>
+            <h3>Sample Project 2</h3>
+            <p>A short summary of the project (challenges and results).</p>
             <a href="https://github.com/hossein-hatami" target="_blank" rel="noopener noreferrer">
-              <span data-en="View" data-fa="مشاهده">View</span>
+              View
             </a>
           </article>
           <article class="project-card glass-panel">
             <div class="project-meta">
-              <span data-en="Systems" data-fa="سیستم">Systems</span>
+              <span>Systems</span>
               <span>Linux</span>
             </div>
-            <h3 data-en="Sample Project 3" data-fa="نمونه پروژه ۳">Sample Project 3</h3>
-            <p
-              data-en="A short summary of the project (tech stack and achievements)."
-              data-fa="یک توضیح کوتاه از پروژه (فناوری‌ها و دستاورد)."
-            >
-              A short summary of the project (tech stack and achievements).
-            </p>
+            <h3>Sample Project 3</h3>
+            <p>A short summary of the project (tech stack and achievements).</p>
             <a href="https://github.com/hossein-hatami" target="_blank" rel="noopener noreferrer">
-              <span data-en="View" data-fa="مشاهده">View</span>
+              View
             </a>
           </article>
         </div>
@@ -407,8 +266,6 @@
       <p>
         &copy; <span id="year"></span>
         <span
-          data-en=" Hossein Hatami. Built with HTML, CSS, JavaScript, and Three.js."
-          data-fa=" Hossein Hatami. ساخته‌شده با HTML، CSS، JavaScript و Three.js."
           >Hossein Hatami. Built with HTML, CSS, JavaScript, and Three.js.</span
         >
       </p>

@@ -3,8 +3,6 @@ const visual = document.querySelector(".scene-backdrop");
 const navToggle = document.querySelector(".nav-toggle");
 const navLinks = document.querySelector(".nav-links");
 const year = document.querySelector("#year");
-const langToggle = document.querySelector("#lang-toggle");
-const langPillLabel = document.querySelector(".lang-pill-label");
 
 const pointer = { x: 0, y: 0 };
 let THREE;
@@ -28,75 +26,6 @@ if (year) {
 
 if (window.lucide) {
   window.lucide.createIcons();
-}
-
-function applyLanguage(lang) {
-  const isFa = lang === "fa";
-  document.documentElement.lang = lang;
-  document.documentElement.dir = isFa ? "rtl" : "ltr";
-
-  document.querySelectorAll("[data-en][data-fa]").forEach((node) => {
-    const text = isFa ? node.getAttribute("data-fa") : node.getAttribute("data-en");
-    if (text) {
-      // Avoid wiping nested markup (icons, spans, etc.).
-      if (node.childElementCount === 0) {
-        node.textContent = text;
-      }
-    }
-  });
-
-  document.querySelectorAll("[data-en-aria][data-fa-aria]").forEach((node) => {
-    const label = isFa ? node.getAttribute("data-fa-aria") : node.getAttribute("data-en-aria");
-    if (label) {
-      node.setAttribute("aria-label", label);
-    }
-  });
-
-  if (langToggle) {
-    // Show target language on the button.
-    if (langPillLabel) {
-      langPillLabel.textContent = isFa ? "EN" : "FA";
-    }
-    const nextAria = isFa ? langToggle.getAttribute("data-fa-aria") : langToggle.getAttribute("data-en-aria");
-    if (nextAria) {
-      langToggle.setAttribute("aria-label", nextAria);
-    }
-  }
-}
-
-let storedLang = "en";
-try {
-  storedLang = localStorage.getItem("lang") || "en";
-} catch {
-  storedLang = "en";
-}
-
-const initialLang = storedLang === "fa" ? "fa" : "en";
-applyLanguage(initialLang);
-
-if (langToggle) {
-  langToggle.addEventListener("click", () => {
-    if (document.documentElement.classList.contains("lang-switching")) {
-      return;
-    }
-
-    const nextLang = document.documentElement.lang === "fa" ? "en" : "fa";
-    document.documentElement.classList.add("lang-switching");
-
-    // Fade out then swap content, then fade back in.
-    window.setTimeout(() => {
-      try {
-        localStorage.setItem("lang", nextLang);
-      } catch {
-        // Ignore storage failures (private mode / blocked storage).
-      }
-      applyLanguage(nextLang);
-    }, 120);
-
-    window.setTimeout(() => {
-      document.documentElement.classList.remove("lang-switching");
-    }, 260);
-  });
 }
 
 // Mobile navigation.
