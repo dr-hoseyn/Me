@@ -3,6 +3,7 @@ const visual = document.querySelector(".scene-backdrop");
 const navToggle = document.querySelector(".nav-toggle");
 const navLinks = document.querySelector(".nav-links");
 const year = document.querySelector("#year");
+const langToggle = document.querySelector("#lang-toggle");
 
 const pointer = { x: 0, y: 0 };
 let THREE;
@@ -26,6 +27,46 @@ if (year) {
 
 if (window.lucide) {
   window.lucide.createIcons();
+}
+
+function applyLanguage(lang) {
+  const isFa = lang === "fa";
+  document.documentElement.lang = lang;
+  document.documentElement.dir = isFa ? "rtl" : "ltr";
+
+  document.querySelectorAll("[data-en][data-fa]").forEach((node) => {
+    const text = isFa ? node.getAttribute("data-fa") : node.getAttribute("data-en");
+    if (text) {
+      node.textContent = text;
+    }
+  });
+
+  document.querySelectorAll("[data-en-aria][data-fa-aria]").forEach((node) => {
+    const label = isFa ? node.getAttribute("data-fa-aria") : node.getAttribute("data-en-aria");
+    if (label) {
+      node.setAttribute("aria-label", label);
+    }
+  });
+
+  if (langToggle) {
+    // Show target language on the button.
+    langToggle.textContent = isFa ? "EN" : "FA";
+    const nextAria = isFa ? langToggle.getAttribute("data-fa-aria") : langToggle.getAttribute("data-en-aria");
+    if (nextAria) {
+      langToggle.setAttribute("aria-label", nextAria);
+    }
+  }
+}
+
+const initialLang = localStorage.getItem("lang") === "fa" ? "fa" : "en";
+applyLanguage(initialLang);
+
+if (langToggle) {
+  langToggle.addEventListener("click", () => {
+    const nextLang = document.documentElement.lang === "fa" ? "en" : "fa";
+    localStorage.setItem("lang", nextLang);
+    applyLanguage(nextLang);
+  });
 }
 
 // Mobile navigation.
