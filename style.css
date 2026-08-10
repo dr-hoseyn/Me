@@ -763,7 +763,7 @@ svg {
   stroke: rgba(139, 184, 255, 0.4);
   stroke-width: 1.25;
   stroke-linecap: round;
-  stroke-dasharray: 1 13;
+  stroke-dasharray: 1 9;
   animation: route-flow 12s linear infinite;
 }
 
@@ -776,10 +776,25 @@ svg {
   stroke: rgba(139, 184, 255, 0.24);
   stroke-width: 1;
   vector-effect: non-scaling-stroke;
+  animation: endpoint-pulse 3.6s ease-in-out infinite;
 }
 
 .route-endpoints circle:nth-child(even) {
   fill: var(--accent);
+}
+
+.route-endpoints circle:nth-child(3),
+.route-endpoints circle:nth-child(4),
+.route-endpoints circle:nth-child(7),
+.route-endpoints circle:nth-child(8) {
+  animation-delay: -1.8s;
+}
+
+@keyframes endpoint-pulse {
+  50% {
+    opacity: 0.45;
+    r: 7px;
+  }
 }
 
 .map-core {
@@ -969,11 +984,76 @@ svg {
 }
 
 .section-head {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(16rem, 0.34fr);
   align-items: end;
   gap: clamp(2rem, 7vw, 7rem);
   margin-bottom: clamp(3rem, 6vw, 5.5rem);
+}
+
+.signal-rail {
+  position: absolute;
+  right: 0;
+  bottom: calc(clamp(3rem, 6vw, 5.5rem) * -0.48);
+  left: 0;
+  height: 12px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.signal-rail::before {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  left: 0;
+  height: 1px;
+  background:
+    repeating-linear-gradient(90deg, transparent 0 10px, rgba(139, 184, 255, 0.09) 10px 11px),
+    linear-gradient(90deg, transparent, rgba(139, 184, 255, 0.13) 18%, rgba(139, 184, 255, 0.13) 82%, transparent);
+  content: "";
+}
+
+.signal-rail span {
+  position: absolute;
+  top: 50%;
+  left: -0.5rem;
+  width: 0.28rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 10px rgba(139, 184, 255, 0.72), 0 0 22px rgba(139, 184, 255, 0.24);
+  opacity: 0;
+  transform: translateY(-50%);
+  animation: signal-packet 10s linear infinite;
+}
+
+.signal-rail span:nth-child(2) {
+  width: 0.2rem;
+  animation-delay: -3.2s;
+  animation-duration: 13s;
+}
+
+.signal-rail span:nth-child(3) {
+  width: 0.24rem;
+  animation-delay: -7.1s;
+  animation-duration: 16s;
+}
+
+.signal-rail-reverse span {
+  animation-name: signal-packet-reverse;
+}
+
+@keyframes signal-packet {
+  0% { left: -0.5rem; opacity: 0; }
+  6%, 92% { opacity: 0.9; }
+  100% { left: calc(100% + 0.5rem); opacity: 0; }
+}
+
+@keyframes signal-packet-reverse {
+  0% { right: -0.5rem; left: auto; opacity: 0; }
+  6%, 92% { opacity: 0.9; }
+  100% { right: calc(100% + 0.5rem); left: auto; opacity: 0; }
 }
 
 .section-label {
@@ -2057,6 +2137,20 @@ svg {
   box-shadow: 0 0 18px rgba(139, 184, 255, 0.75);
   animation: contact-orbit 14s linear infinite;
   transform-origin: calc(min(65vw, 47rem) / 2 + 0.2rem) center;
+}
+
+.contact-orbit span:nth-child(2) {
+  width: 0.28rem;
+  opacity: 0.62;
+  animation-delay: -5s;
+  animation-duration: 19s;
+}
+
+.contact-orbit span:nth-child(3) {
+  width: 0.22rem;
+  opacity: 0.42;
+  animation-delay: -11s;
+  animation-duration: 25s;
 }
 
 @keyframes contact-orbit {
