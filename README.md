@@ -16,11 +16,13 @@ The site also presents selected repositories including Tunnel Panel, WaterWall M
 
 ## Design direction
 
-The visual system is based on network topology and operational dashboards rather than a generic portfolio template. Its signature element is the interactive signal map in the hero, connecting Hossein's three core areas: product web, Telegram systems, and network tooling.
+The visual system pairs a precise, editorial layout with network-topology details rather than generic portfolio chrome. Its signature element is the interactive signal map in the hero, connecting Hossein's core areas: product web, Telegram systems, and network tooling.
 
-- Display type: Space Grotesk
-- Body type: IBM Plex Sans
+- Display type: Syne
+- Body type: Manrope
 - Utility/data type: IBM Plex Mono
+- Deep graphite surfaces with one restrained mineral-blue accent
+- Asymmetric project and open-source grids with compact technical metadata
 - Responsive from small mobile screens to wide desktops
 - Reduced-motion support and visible keyboard focus states
 - Semantic sections, skip navigation, and accessible controls
