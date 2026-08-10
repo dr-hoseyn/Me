@@ -40,7 +40,7 @@
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Manrope:wght@400;500;600;700&amp;family=Syne:wght@500;600;700&amp;display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css?v=9" />
+    <link rel="stylesheet" href="style.css?v=10" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -133,21 +133,41 @@
 
         <div class="signal-map" role="img" aria-label="A map of Hossein’s product areas">
           <div class="map-grid" aria-hidden="true"></div>
+          <div class="map-header" aria-hidden="true"><span>CAPABILITY NETWORK</span><span>04 CONNECTED DOMAINS</span></div>
           <div class="map-orbit orbit-one" aria-hidden="true"></div>
           <div class="map-orbit orbit-two" aria-hidden="true"></div>
           <svg class="map-lines" viewBox="0 0 600 570" aria-hidden="true" preserveAspectRatio="none">
-            <path d="M300 285 C220 220 188 133 118 108" />
-            <path d="M300 285 C405 230 430 128 506 98" />
-            <path d="M300 285 C230 340 180 420 108 466" />
-            <path d="M300 285 C386 346 430 425 505 477" />
+            <g class="route-base">
+              <path d="M282 270 C248 246 256 130 166 130" />
+              <path d="M318 270 C352 246 344 130 434 130" />
+              <path d="M282 300 C248 324 256 440 166 440" />
+              <path d="M318 300 C352 324 344 440 434 440" />
+            </g>
+            <g class="route-signal">
+              <path d="M282 270 C248 246 256 130 166 130" />
+              <path d="M318 270 C352 246 344 130 434 130" />
+              <path d="M282 300 C248 324 256 440 166 440" />
+              <path d="M318 300 C352 324 344 440 434 440" />
+            </g>
+            <g class="route-endpoints">
+              <circle cx="166" cy="130" r="5" /><circle cx="166" cy="130" r="2" />
+              <circle cx="434" cy="130" r="5" /><circle cx="434" cy="130" r="2" />
+              <circle cx="166" cy="440" r="5" /><circle cx="166" cy="440" r="2" />
+              <circle cx="434" cy="440" r="5" /><circle cx="434" cy="440" r="2" />
+            </g>
           </svg>
-          <div class="map-core"><span>HH</span><small>BUILD<br />SHIP<br />RUN</small></div>
+          <div class="map-core">
+            <span class="map-core-mark">HH</span>
+            <div class="map-core-copy"><small>SYSTEM CORE</small><b>BUILD / SHIP / RUN</b></div>
+          </div>
           <div class="map-node node-web"><i></i><span>WEB PRODUCTS</span><small>PANA · ToolGrym</small></div>
           <div class="map-node node-bots"><i></i><span>BOT SYSTEMS</span><small>Sales · Resellers</small></div>
           <div class="map-node node-linux"><i></i><span>LINUX OPS</span><small>Deploy · Automate</small></div>
           <div class="map-node node-network"><i></i><span>NETWORK TOOLS</span><small>Tunnels · Control</small></div>
-          <p class="map-label">SYSTEM / CAPABILITY MAP</p>
-          <p class="map-status"><span></span> Systems online</p>
+          <div class="map-footer">
+            <p class="map-label">SYSTEM / CAPABILITY MAP</p>
+            <p class="map-status"><span></span> Systems online</p>
+          </div>
         </div>
       </section>
 
