@@ -66,6 +66,6 @@ GitHub Pages serves the repository from the `main` branch. Pushing a change to `
 ## Contact
 
 - GitHub: [@dr-hoseyn](https://github.com/dr-hoseyn)
-- Telegram: [@haj_hoseynam](https://t.me/haj_hoseynam)
+- Telegram: [@haj_hoseyn](https://t.me/haj_hoseyn)
 
 © Hossein Hatami.

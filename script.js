@@ -2,9 +2,51 @@ const navToggle = document.querySelector(".nav-toggle");
 const navLinks = document.querySelector(".nav-links");
 const year = document.querySelector("#year");
 const signalMap = document.querySelector(".signal-map");
+const previewFrames = document.querySelectorAll(".preview-frame");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 if (year) year.textContent = new Date().getFullYear();
+
+const activatePreview = (frame) => {
+  if (frame.dataset.activated === "true" || !frame.dataset.src) return;
+  frame.dataset.activated = "true";
+  frame.src = frame.dataset.src;
+};
+
+previewFrames.forEach((frame) => {
+  frame.addEventListener("load", () => {
+    if (frame.dataset.activated === "true") {
+      frame.closest(".live-preview")?.classList.add("is-loaded");
+    }
+  });
+});
+
+const prepareLivePreviews = () => {
+  if (!("IntersectionObserver" in window)) {
+    previewFrames.forEach(activatePreview);
+    return;
+  }
+
+  const previewObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          activatePreview(entry.target);
+          previewObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { rootMargin: "500px 0px", threshold: 0.01 }
+  );
+
+  previewFrames.forEach((frame) => previewObserver.observe(frame));
+};
+
+if (document.readyState === "complete") {
+  prepareLivePreviews();
+} else {
+  window.addEventListener("load", prepareLivePreviews, { once: true });
+}
 
 if (navToggle && navLinks) {
   navToggle.addEventListener("click", () => {

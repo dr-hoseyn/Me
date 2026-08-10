@@ -34,7 +34,7 @@
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css?v=3" />
+    <link rel="stylesheet" href="style.css?v=4" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -43,7 +43,7 @@
         "url": "https://dr-hoseyn.github.io/Me/",
         "sameAs": [
           "https://github.com/dr-hoseyn",
-          "https://t.me/haj_hoseynam"
+          "https://t.me/haj_hoseyn"
         ],
         "jobTitle": "Software Engineer",
         "knowsAbout": [
@@ -133,15 +133,26 @@
 
         <div class="featured-work">
           <article class="case-study case-pana reveal">
-            <a class="case-visual" href="https://panagelato.ir/en" target="_blank" rel="noopener noreferrer" aria-label="Visit PANA Gelato">
-              <div class="browser-bar"><span></span><span></span><span></span><small>panagelato.ir</small></div>
-              <div class="pana-canvas">
-                <span class="pana-word">PANA</span>
-                <div class="scoop scoop-one"></div>
-                <div class="scoop scoop-two"></div>
-                <div class="pana-note">Natural ingredients.<br />A bright digital storefront.</div>
+            <div class="case-visual live-preview">
+              <div class="browser-bar">
+                <span></span><span></span><span></span>
+                <small>panagelato.ir/en</small>
+                <a href="https://panagelato.ir/en" target="_blank" rel="noopener noreferrer" aria-label="Open PANA Gelato in a new tab">↗</a>
               </div>
-            </a>
+              <div class="preview-frame-shell">
+                <div class="preview-loading"><i></i><span>Loading live website…</span></div>
+                <iframe
+                  class="preview-frame"
+                  src="about:blank"
+                  data-src="https://panagelato.ir/en?embed=portfolio-v1"
+                  title="Interactive preview of PANA Gelato"
+                  loading="lazy"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"
+                ></iframe>
+              </div>
+              <div class="preview-footer"><span><i></i> Live interactive preview</span><a href="https://panagelato.ir/en" target="_blank" rel="noopener noreferrer">Open full site ↗</a></div>
+            </div>
             <div class="case-copy">
               <div class="case-number">LIVE WEBSITE</div>
               <h3>PANA Gelato</h3>
@@ -169,16 +180,26 @@
               </ul>
               <a class="text-link" href="https://toolgrym.com/" target="_blank" rel="noopener noreferrer">Use ToolGrym <span>↗</span></a>
             </div>
-            <a class="case-visual" href="https://toolgrym.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit ToolGrym">
-              <div class="browser-bar"><span></span><span></span><span></span><small>toolgrym.com</small></div>
-              <div class="grym-canvas">
-                <div class="formula-head"><small>MORTGAGE PAYMENT</small><strong>$1,896.20</strong><span>per month</span></div>
-                <div class="formula-rule"></div>
-                <code>M = P · r(1+r)ⁿ / ((1+r)ⁿ − 1)</code>
-                <div class="formula-bars"><i></i><i></i><i></i><i></i><i></i><i></i></div>
-                <p>THE MATH, SHOWN IN FULL.</p>
+            <div class="case-visual live-preview">
+              <div class="browser-bar">
+                <span></span><span></span><span></span>
+                <small>toolgrym.com</small>
+                <a href="https://toolgrym.com/" target="_blank" rel="noopener noreferrer" aria-label="Open ToolGrym in a new tab">↗</a>
               </div>
-            </a>
+              <div class="preview-frame-shell">
+                <div class="preview-loading"><i></i><span>Loading live website…</span></div>
+                <iframe
+                  class="preview-frame"
+                  src="about:blank"
+                  data-src="https://toolgrym.com/"
+                  title="Interactive preview of ToolGrym"
+                  loading="lazy"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"
+                ></iframe>
+              </div>
+              <div class="preview-footer"><span><i></i> Live interactive preview</span><a href="https://toolgrym.com/" target="_blank" rel="noopener noreferrer">Open full site ↗</a></div>
+            </div>
           </article>
         </div>
       </section>
@@ -290,7 +311,7 @@
           <h2 id="contact-title">Have a useful thing to build?</h2>
           <p>I'm open to product, automation, and infrastructure work where thoughtful execution matters.</p>
           <div class="contact-actions">
-            <a class="button button-light" href="https://t.me/haj_hoseynam" target="_blank" rel="noopener noreferrer">Message on Telegram <span>↗</span></a>
+            <a class="button button-light" href="https://t.me/haj_hoseyn" target="_blank" rel="noopener noreferrer">Message on Telegram <span>↗</span></a>
             <a class="button button-ghost" href="https://github.com/dr-hoseyn" target="_blank" rel="noopener noreferrer">Follow on GitHub <span>↗</span></a>
           </div>
         </div>
@@ -303,6 +324,6 @@
       <p>© <span id="year"></span> · Tabriz, Iran</p>
     </footer>
 
-    <script src="script.js?v=3" defer></script>
+    <script src="script.js?v=4" defer></script>
   </body>
 </html>

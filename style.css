@@ -575,6 +575,115 @@ p {
   font-size: 0.55rem;
 }
 
+.browser-bar a {
+  display: grid;
+  width: 1.65rem;
+  height: 1.65rem;
+  margin-left: 0.35rem;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--signal-soft);
+  font-family: var(--mono);
+  font-size: 0.62rem;
+}
+
+.live-preview:hover,
+.live-preview:focus-within {
+  border-color: rgba(84, 198, 255, 0.5);
+  transform: translateY(-5px);
+}
+
+.preview-frame-shell {
+  position: relative;
+  height: 30rem;
+  overflow: hidden;
+  background: #f6f7f8;
+}
+
+.preview-frame {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: transparent;
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+
+.live-preview.is-loaded .preview-frame {
+  opacity: 1;
+}
+
+.preview-loading {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 0.8rem;
+  background: #eef2f4;
+  color: #4e5f69;
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.preview-loading i {
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 2px solid rgba(7, 16, 26, 0.14);
+  border-top-color: #169cd0;
+  border-radius: 50%;
+  animation: preview-spin 700ms linear infinite;
+}
+
+@keyframes preview-spin {
+  to { transform: rotate(360deg); }
+}
+
+.live-preview.is-loaded .preview-loading {
+  display: none;
+}
+
+.preview-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 2.8rem;
+  padding: 0 0.85rem;
+  border-top: 1px solid var(--line);
+  background: #0d1926;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.54rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.preview-footer > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.preview-footer i {
+  width: 0.38rem;
+  height: 0.38rem;
+  border-radius: 50%;
+  background: var(--mint);
+  box-shadow: 0 0 10px rgba(114, 225, 181, 0.65);
+}
+
+.preview-footer a {
+  color: var(--signal-soft);
+}
+
 .pana-canvas {
   position: relative;
   min-height: 30rem;
@@ -1423,6 +1532,18 @@ p {
   .pana-canvas,
   .grym-canvas {
     min-height: 19rem;
+  }
+
+  .preview-frame-shell {
+    height: 25rem;
+  }
+
+  .preview-footer > span {
+    display: none;
+  }
+
+  .preview-footer {
+    justify-content: flex-end;
   }
 
   .pana-word {
