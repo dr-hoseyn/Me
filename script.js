@@ -9,8 +9,10 @@ if (year) year.textContent = new Date().getFullYear();
 
 const activatePreview = (frame) => {
   if (frame.dataset.activated === "true" || !frame.dataset.src) return;
+  const preview = frame.closest(".live-preview");
   frame.dataset.activated = "true";
   frame.src = frame.dataset.src;
+  window.setTimeout(() => preview?.classList.add("is-loaded"), 3500);
 };
 
 previewFrames.forEach((frame) => {
