@@ -213,7 +213,7 @@ p {
   align-items: center;
   gap: clamp(2rem, 5vw, 5rem);
   width: min(calc(100% - 2rem), var(--max));
-  min-height: calc(100vh - 6rem);
+  min-height: min(56rem, calc(100vh - 6rem));
   margin: 0 auto;
   padding: clamp(4rem, 8vw, 8rem) 0;
 }
@@ -254,12 +254,12 @@ p {
 }
 
 .hero h1 {
-  max-width: 12ch;
+  max-width: 11ch;
   margin-bottom: 1.5rem;
   font-family: var(--display);
-  font-size: clamp(3.5rem, 7.8vw, 7rem);
-  line-height: 0.92;
-  letter-spacing: -0.065em;
+  font-size: clamp(3.5rem, 6.6vw, 6rem);
+  line-height: 0.96;
+  letter-spacing: -0.055em;
 }
 
 .hero h1 em {
@@ -323,30 +323,6 @@ p {
 
 .button-secondary:hover {
   border-color: var(--signal);
-}
-
-.hero-index {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem 1.6rem;
-  margin-top: 3.5rem;
-  padding-top: 1.2rem;
-  border-top: 1px solid var(--line);
-  color: var(--muted);
-  font-family: var(--mono);
-  font-size: 0.65rem;
-  text-transform: uppercase;
-}
-
-.hero-index span {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-}
-
-.hero-index i {
-  color: var(--signal);
-  font-style: normal;
 }
 
 .signal-map {
@@ -870,7 +846,7 @@ p {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 4rem;
+  margin-bottom: 2.75rem;
 }
 
 .telegram-mark,
@@ -1280,6 +1256,16 @@ p {
     align-items: start;
   }
 
+  .hero {
+    min-height: auto;
+    max-width: 46rem;
+    padding-block: 5rem 6rem;
+  }
+
+  .signal-map {
+    display: none;
+  }
+
   .case-study,
   .case-toolgrym {
     grid-template-columns: 1fr;
@@ -1337,11 +1323,27 @@ p {
 
   .hero {
     min-height: auto;
-    padding-top: 3.5rem;
+    gap: 0;
+    padding: 3.5rem 0 4.5rem;
   }
 
   .hero h1 {
-    font-size: clamp(3.15rem, 16vw, 4.4rem);
+    max-width: 100%;
+    margin-bottom: 1.15rem;
+    font-size: clamp(2.85rem, 13vw, 3.55rem);
+    line-height: 1;
+    letter-spacing: -0.045em;
+  }
+
+  .kicker {
+    margin-bottom: 1.15rem;
+    font-size: 0.56rem;
+    letter-spacing: 0.07em;
+  }
+
+  .hero-intro {
+    font-size: 0.95rem;
+    line-height: 1.65;
   }
 
   .hero-actions,
@@ -1353,12 +1355,12 @@ p {
     width: 100%;
   }
 
-  .hero-index {
-    display: grid;
+  .hero-actions {
+    margin-top: 1.6rem;
   }
 
-  .signal-map {
-    min-height: 29rem;
+  .button {
+    min-height: 3rem;
   }
 
   .map-core {
@@ -1391,18 +1393,36 @@ p {
   .node-linux { bottom: 13%; left: 4%; }
   .node-network { right: 3%; bottom: 14%; }
 
+  .section {
+    padding-block: 4.25rem;
+  }
+
+  .section-head {
+    gap: 1rem;
+    margin-bottom: 2.25rem;
+  }
+
+  .section-label {
+    margin-bottom: 0.85rem;
+  }
+
   .section-head h2,
   .about-intro h2 {
-    font-size: clamp(2.45rem, 12vw, 3.5rem);
+    font-size: clamp(2.2rem, 10.5vw, 3rem);
+    line-height: 1.03;
   }
 
   .section-head > p {
     font-size: 0.9rem;
   }
 
+  .featured-work {
+    gap: 3.75rem;
+  }
+
   .pana-canvas,
   .grym-canvas {
-    min-height: 23rem;
+    min-height: 19rem;
   }
 
   .pana-word {
@@ -1432,7 +1452,20 @@ p {
   }
 
   .bot-card {
-    min-height: 26rem;
+    min-height: 0;
+    padding: 1.35rem;
+  }
+
+  .bot-top {
+    margin-bottom: 2rem;
+  }
+
+  .feature-list {
+    margin-bottom: 1.4rem;
+  }
+
+  .bot-card .card-link {
+    margin-top: 1rem;
   }
 
   .repo-card {
@@ -1453,7 +1486,7 @@ p {
   }
 
   .contact-section {
-    min-height: 31rem;
+    min-height: 27rem;
   }
 
   .contact-copy h2 {
