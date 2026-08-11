@@ -1577,37 +1577,13 @@ svg {
 
 .topology-caption {
   display: block;
-  margin-bottom: 0.9rem;
+  margin-bottom: 1.1rem;
   color: var(--faint);
   font-family: var(--mono);
   font-size: 0.54rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
-
-.topology-track {
-  position: absolute;
-  right: 16.666%;
-  bottom: 2.2rem;
-  left: 16.666%;
-  height: 1px;
-  background: linear-gradient(90deg, var(--accent), rgba(139, 184, 255, 0.16), var(--accent));
-}
-
-.topology-track i {
-  position: absolute;
-  top: 50%;
-  width: 0.36rem;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 12px rgba(139, 184, 255, 0.58);
-  transform: translate(-50%, -50%);
-}
-
-.topology-track i:nth-child(1) { left: 0; }
-.topology-track i:nth-child(2) { left: 50%; }
-.topology-track i:nth-child(3) { left: 100%; }
 
 .topology-nodes {
   position: relative;
@@ -1616,13 +1592,45 @@ svg {
   gap: 1rem;
 }
 
+.topology-nodes::before {
+  position: absolute;
+  top: 0.28rem;
+  right: 16.666%;
+  left: 16.666%;
+  height: 1px;
+  background: linear-gradient(90deg, var(--accent), rgba(139, 184, 255, 0.2), var(--accent));
+  content: "";
+}
+
 .topology-nodes > div {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: relative;
+  display: grid;
+  justify-items: center;
   gap: 0.65rem;
   color: var(--text-soft);
   text-align: center;
+}
+
+.topology-nodes > div > i {
+  position: relative;
+  z-index: 1;
+  width: 0.56rem;
+  aspect-ratio: 1;
+  border: 3px solid var(--surface);
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 1px rgba(139, 184, 255, 0.2), 0 0 14px rgba(139, 184, 255, 0.48);
+}
+
+.topology-nodes > div > span {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.65rem;
+  max-width: calc(100% - 1rem);
+  padding: 0.48rem 0.82rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.025);
 }
 
 .topology-nodes small {
@@ -1632,7 +1640,7 @@ svg {
 }
 
 .topology-nodes strong {
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   font-weight: 600;
 }
 
@@ -3218,6 +3226,10 @@ html[data-theme="light"] .system-topology {
   background-image: linear-gradient(90deg, rgba(65, 111, 184, 0.08), rgba(248, 250, 252, 0.92), rgba(65, 111, 184, 0.08));
 }
 
+html[data-theme="light"] .topology-nodes > div > span {
+  background: rgba(255, 255, 255, 0.64);
+}
+
 html[data-theme="light"] .case-visual {
   background: linear-gradient(145deg, #dfe7f0, #edf2f7);
 }
@@ -3273,9 +3285,15 @@ html[data-theme="light"] .button-light:hover {
   }
 
   .topology-nodes > div {
-    display: grid;
     gap: 0.25rem;
-    justify-items: center;
+  }
+
+  .topology-nodes > div > span {
+    display: grid;
+    width: 100%;
+    gap: 0.08rem;
+    padding: 0.4rem 0.25rem;
+    border-radius: 10px;
   }
 
   .topology-nodes strong {
