@@ -291,6 +291,10 @@ svg {
 }
 
 @media (min-width: 901px) {
+  .system-dock {
+    display: none;
+  }
+
   .system-dock:hover,
   .system-dock:focus-within {
     width: 12.5rem;
@@ -310,6 +314,125 @@ svg {
     opacity: 1;
     transform: translateX(0);
   }
+}
+
+.signal-journey {
+  --journey-y: 4%;
+  position: fixed;
+  top: 6.6rem;
+  bottom: 2.2rem;
+  right: auto;
+  left: clamp(0.85rem, 1.25vw, 1.25rem);
+  z-index: 89;
+  width: 1px;
+  color: var(--accent);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 260ms ease, color 420ms ease;
+}
+
+.signal-journey.is-visible {
+  opacity: 0.78;
+}
+
+.signal-journey[data-domain="bots"],
+.signal-journey[data-domain="network"] {
+  color: var(--accent-secondary);
+}
+
+.signal-journey[data-section="contact"] {
+  color: var(--accent-sunset);
+}
+
+.journey-line {
+  position: absolute;
+  inset: 0;
+  width: 1px;
+  background:
+    linear-gradient(180deg, transparent, currentColor 8%, currentColor 92%, transparent),
+    repeating-linear-gradient(180deg, transparent 0 7px, currentColor 7px 8px);
+  opacity: 0.14;
+}
+
+.journey-line::before,
+.journey-line::after {
+  position: absolute;
+  left: 50%;
+  width: 0.24rem;
+  aspect-ratio: 1;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  background: var(--bg-primary);
+  content: "";
+  opacity: 0.55;
+  transform: translateX(-50%);
+}
+
+.journey-line::before { top: 0; }
+.journey-line::after { bottom: 0; }
+
+.journey-packet {
+  position: absolute;
+  top: var(--journey-y);
+  left: 50%;
+  width: 0.5rem;
+  aspect-ratio: 1;
+  border: 1px solid rgba(255, 255, 255, 0.58);
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 0 5px color-mix(in srgb, currentColor 11%, transparent), 0 0 14px currentColor, 0 0 32px color-mix(in srgb, currentColor 38%, transparent);
+  transform: translate(-50%, -50%);
+  transition: top 100ms linear, color 360ms ease;
+}
+
+.journey-packet::before {
+  position: absolute;
+  right: 50%;
+  bottom: calc(100% + 0.18rem);
+  width: 1px;
+  height: 1.8rem;
+  background: linear-gradient(0deg, currentColor, transparent);
+  content: "";
+  opacity: 0.38;
+  transform: translateX(50%);
+}
+
+.journey-packet > i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.24rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 9px currentColor;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+}
+
+.signal-journey.is-bursting .journey-packet > i:nth-child(1) { animation: packet-split-one 920ms var(--ease-out); }
+.signal-journey.is-bursting .journey-packet > i:nth-child(2) { animation: packet-split-two 920ms 45ms var(--ease-out); }
+.signal-journey.is-bursting .journey-packet > i:nth-child(3) { animation: packet-split-three 920ms 80ms var(--ease-out); }
+.signal-journey.is-bursting .journey-packet > i:nth-child(4) { animation: packet-split-four 920ms 115ms var(--ease-out); }
+
+@keyframes packet-split-one {
+  0%, 100% { opacity: 0; transform: translate(-50%, -50%); }
+  28%, 62% { opacity: 0.9; transform: translate(calc(-50% - 13px), calc(-50% - 10px)); }
+}
+
+@keyframes packet-split-two {
+  0%, 100% { opacity: 0; transform: translate(-50%, -50%); }
+  28%, 62% { opacity: 0.72; transform: translate(calc(-50% + 14px), calc(-50% - 8px)); }
+}
+
+@keyframes packet-split-three {
+  0%, 100% { opacity: 0; transform: translate(-50%, -50%); }
+  28%, 62% { opacity: 0.64; transform: translate(calc(-50% - 11px), calc(-50% + 13px)); }
+}
+
+@keyframes packet-split-four {
+  0%, 100% { opacity: 0; transform: translate(-50%, -50%); }
+  28%, 62% { opacity: 0.78; transform: translate(calc(-50% + 12px), calc(-50% + 12px)); }
 }
 
 .brand {
@@ -1262,6 +1385,11 @@ svg {
   height: 12px;
   overflow: hidden;
   pointer-events: none;
+  color: var(--accent);
+}
+
+.automation-section .signal-rail {
+  color: var(--accent-secondary);
 }
 
 .signal-rail::before {
@@ -1283,8 +1411,8 @@ svg {
   width: 0.28rem;
   aspect-ratio: 1;
   border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 10px rgba(139, 184, 255, 0.72), 0 0 22px rgba(139, 184, 255, 0.24);
+  background: currentColor;
+  box-shadow: 0 0 10px currentColor, 0 0 22px color-mix(in srgb, currentColor 32%, transparent);
   opacity: 0;
   transform: translateY(-50%);
   animation: signal-packet 10s linear infinite;
@@ -1304,6 +1432,39 @@ svg {
 
 .signal-rail-reverse span {
   animation-name: signal-packet-reverse;
+}
+
+.signal-rail.is-active::before {
+  background:
+    repeating-linear-gradient(90deg, transparent 0 10px, color-mix(in srgb, currentColor 16%, transparent) 10px 11px),
+    linear-gradient(90deg, transparent, color-mix(in srgb, currentColor 25%, transparent) 18%, color-mix(in srgb, currentColor 25%, transparent) 82%, transparent);
+}
+
+.signal-rail.is-active span:first-child { animation-duration: 6.5s; }
+.signal-rail.is-active span:nth-child(2) { animation-duration: 8.5s; }
+.signal-rail.is-active span:nth-child(3) { animation-duration: 11s; }
+
+.signal-rail::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.35rem;
+  aspect-ratio: 1;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  content: "";
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.4);
+}
+
+.signal-rail.is-arriving::after {
+  animation: rail-receive 900ms var(--ease-out);
+}
+
+@keyframes rail-receive {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.35); }
+  24% { opacity: 0.85; }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(5.5); }
 }
 
 @keyframes signal-packet {
@@ -2362,6 +2523,17 @@ svg {
   box-shadow: 0 0 0 1px rgba(139, 184, 255, 0.35), 0 0 13px rgba(139, 184, 255, 0.22);
 }
 
+.about-section.is-signal-active .timeline-dot {
+  animation: timeline-signal 2.6s ease-in-out infinite;
+}
+
+@keyframes timeline-signal {
+  50% {
+    box-shadow: 0 0 0 6px rgba(139, 184, 255, 0.035), 0 0 20px rgba(139, 184, 255, 0.55);
+    transform: scale(1.12);
+  }
+}
+
 .timeline small {
   display: block;
   margin-bottom: 0.4rem;
@@ -2555,6 +2727,33 @@ svg {
   opacity: 0.42;
   animation-delay: -11s;
   animation-duration: 25s;
+}
+
+.contact-core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.7rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--accent-sunset);
+  box-shadow: 0 0 0 0 rgba(231, 131, 112, 0), 0 0 22px rgba(231, 131, 112, 0.58), 0 0 60px rgba(231, 131, 112, 0.18);
+  opacity: 0.26;
+  transform: translate(-50%, -50%) scale(0.7);
+  transition: opacity 500ms ease, transform 700ms var(--ease-out);
+}
+
+.contact-section.is-signal-active .contact-core {
+  opacity: 0.92;
+  transform: translate(-50%, -50%) scale(1);
+  animation: contact-core-pulse 2.8s ease-in-out infinite;
+}
+
+@keyframes contact-core-pulse {
+  50% {
+    box-shadow: 0 0 0 14px rgba(231, 131, 112, 0.025), 0 0 30px rgba(231, 131, 112, 0.72), 0 0 80px rgba(231, 131, 112, 0.24);
+    transform: translate(-50%, -50%) scale(1.18);
+  }
 }
 
 @keyframes contact-orbit {
@@ -2761,6 +2960,22 @@ svg {
   .system-dock-links small {
     width: auto;
     flex-basis: auto;
+  }
+
+  .signal-journey {
+    top: 5.3rem;
+    bottom: 5.4rem;
+    right: auto;
+    left: 0.48rem;
+    opacity: 0;
+  }
+
+  .signal-journey.is-visible {
+    opacity: 0.55;
+  }
+
+  .signal-journey.is-bursting .journey-packet > i {
+    display: none;
   }
 
   .nav-shell {
@@ -3058,6 +3273,10 @@ svg {
   .node-network { right: 3%; bottom: 17%; }
   .map-label { display: none; }
 
+  .signal-rail span:nth-child(n + 2) {
+    display: none;
+  }
+
   .section {
     padding-block: 5rem;
   }
@@ -3270,6 +3489,16 @@ svg {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+
+  .signal-journey {
+    display: none;
+  }
+
+  .signal-rail span {
+    left: 50%;
+    opacity: 0.55;
+    animation: none !important;
   }
 }
 

@@ -246,12 +246,14 @@ const navToggle = document.querySelector(".nav-toggle");
 const navLinks = document.querySelector(".nav-links");
 const siteHeader = document.querySelector(".site-header");
 const systemDock = document.querySelector(".system-dock");
+const signalJourney = document.querySelector(".signal-journey");
 const heroSection = document.querySelector(".hero");
 const year = document.querySelector("#year");
 const signalMap = document.querySelector(".signal-map");
 const mapNodes = [...document.querySelectorAll(".map-node[data-domain]")];
 const mapRoutes = [...document.querySelectorAll(".map-route[data-domain], .map-endpoint[data-domain]")];
 const dockLinks = [...document.querySelectorAll(".system-dock a[data-domain]")];
+const signalRails = [...document.querySelectorAll(".signal-rail")];
 const mapStatusCopy = document.querySelector(".map-status-copy");
 const previewFrames = document.querySelectorAll(".preview-frame");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -261,18 +263,35 @@ const finePointerQuery = window.matchMedia("(hover: hover) and (pointer: fine)")
 if (year) year.textContent = new Date().getFullYear();
 
 let dockThreshold = heroSection ? heroSection.offsetTop + heroSection.offsetHeight * 0.62 : 520;
+let journeyMaxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+
+const updateJourneyPosition = () => {
+  if (!signalJourney) return;
+  const isVisible = window.scrollY > dockThreshold;
+  const journeyRange = Math.max(1, journeyMaxScroll - dockThreshold);
+  const progress = Math.min(1, Math.max(0, (window.scrollY - dockThreshold) / journeyRange));
+  signalJourney.classList.toggle("is-visible", isVisible);
+  signalJourney.style.setProperty("--journey-y", `${4 + progress * 92}%`);
+};
 
 const updateHeader = () => {
   siteHeader?.classList.toggle("is-scrolled", window.scrollY > 18);
   systemDock?.classList.toggle("is-visible", window.scrollY > dockThreshold);
+  updateJourneyPosition();
 };
 
 updateHeader();
 window.addEventListener("scroll", updateHeader, { passive: true });
 window.addEventListener("resize", () => {
   dockThreshold = heroSection ? heroSection.offsetTop + heroSection.offsetHeight * 0.62 : 520;
+  journeyMaxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
   updateHeader();
 }, { passive: true });
+
+window.addEventListener("load", () => {
+  journeyMaxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+  updateHeader();
+}, { once: true });
 
 const syncMenuAccessibility = () => {
   if (!navLinks) return;
@@ -332,6 +351,7 @@ const sectionDomains = {
 };
 
 let activeSectionId = "";
+let journeyBurstTimer;
 
 const getDomainLabel = (domain) => {
   const node = mapNodes.find((item) => item.dataset.domain === domain);
@@ -356,8 +376,10 @@ const updateMapStatus = (domain, mode = "active") => {
 };
 
 const setActiveDomain = (sectionId) => {
+  const previousSectionId = activeSectionId;
   activeSectionId = sectionId || activeSectionId;
   const domain = sectionDomains[activeSectionId];
+  const sectionChanged = Boolean(activeSectionId && activeSectionId !== previousSectionId);
 
   if (signalMap) {
     if (domain) signalMap.dataset.activeDomain = domain;
@@ -378,6 +400,36 @@ const setActiveDomain = (sectionId) => {
     if (isActive) link.setAttribute("aria-current", "location");
     else link.removeAttribute("aria-current");
   });
+
+  observedSections.forEach((section) => {
+    section.classList.toggle("is-signal-active", section.id === activeSectionId);
+  });
+
+  signalRails.forEach((rail) => {
+    const isActive = rail.closest("section")?.id === activeSectionId;
+    rail.classList.toggle("is-active", isActive);
+    if (!isActive) rail.classList.remove("is-arriving");
+  });
+
+  if (signalJourney) {
+    signalJourney.dataset.domain = domain || "idle";
+    signalJourney.dataset.section = activeSectionId || "hero";
+
+    if (sectionChanged && !reduceMotion) {
+      signalJourney.classList.remove("is-bursting");
+      window.clearTimeout(journeyBurstTimer);
+      window.requestAnimationFrame(() => {
+        signalJourney.classList.add("is-bursting");
+        journeyBurstTimer = window.setTimeout(() => signalJourney.classList.remove("is-bursting"), 1250);
+      });
+
+      const activeRail = signalRails.find((rail) => rail.closest("section")?.id === activeSectionId);
+      if (activeRail) {
+        activeRail.classList.remove("is-arriving");
+        window.requestAnimationFrame(() => activeRail.classList.add("is-arriving"));
+      }
+    }
+  }
 
   updateMapStatus(domain);
 };
