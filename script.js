@@ -20,6 +20,13 @@ const translations = {
     disciplineInfrastructure: "زیرساخت",
     mapNetwork: "شبکهٔ توانمندی‌ها",
     mapDomains: "۰۴ حوزهٔ متصل",
+    mapHint: "یک حوزه را انتخاب کنید",
+    mapLive: "نقشهٔ زندهٔ سیستم",
+    mapNavigate: "برای مشاهده یک حوزه را انتخاب کنید",
+    dockProduct: "محصول",
+    dockAutomation: "اتوماسیون",
+    dockOpenSource: "متن‌باز",
+    dockAbout: "درباره من",
     mapCore: "هستهٔ سیستم",
     mapBuild: "ساخت / انتشار / اجرا",
     mapWeb: "محصولات وب",
@@ -123,6 +130,11 @@ const translations = {
     primaryNav: "ناوبری اصلی",
     brandHome: "صفحهٔ اصلی حسین حاتمی",
     menuToggle: "باز و بسته‌کردن منوی ناوبری",
+    mapNavigation: "ناوبری تعاملی توانمندی‌ها",
+    mapWebLink: "مشاهدهٔ محصولات وب",
+    mapBotsLink: "مشاهدهٔ سامانه‌های رباتی",
+    mapLinuxLink: "مشاهدهٔ تجربهٔ عملیات لینوکس",
+    mapNetworkLink: "مشاهدهٔ ابزارهای متن‌باز شبکه",
     topologyAria: "لایه‌های محصولات تلگرامی",
     profileAlt: "حسین حاتمی در برابر آسمان غروب",
     panaPreviewAlt: "پیش‌نمایش وب‌سایت بستنی PANA",
@@ -211,6 +223,7 @@ const applyLanguage = (language, persist = true) => {
     try { localStorage.setItem("portfolio-language", nextLanguage); } catch (_) {}
   }
   updateThemeControl();
+  document.dispatchEvent(new CustomEvent("portfolio:languagechange"));
 };
 
 languageToggle?.addEventListener("click", () => {
@@ -232,8 +245,14 @@ updateThemeControl();
 const navToggle = document.querySelector(".nav-toggle");
 const navLinks = document.querySelector(".nav-links");
 const siteHeader = document.querySelector(".site-header");
+const systemDock = document.querySelector(".system-dock");
+const heroSection = document.querySelector(".hero");
 const year = document.querySelector("#year");
 const signalMap = document.querySelector(".signal-map");
+const mapNodes = [...document.querySelectorAll(".map-node[data-domain]")];
+const mapRoutes = [...document.querySelectorAll(".map-route[data-domain], .map-endpoint[data-domain]")];
+const dockLinks = [...document.querySelectorAll(".system-dock a[data-domain]")];
+const mapStatusCopy = document.querySelector(".map-status-copy");
 const previewFrames = document.querySelectorAll(".preview-frame");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const mobileNavQuery = window.matchMedia("(max-width: 900px)");
@@ -241,12 +260,19 @@ const finePointerQuery = window.matchMedia("(hover: hover) and (pointer: fine)")
 
 if (year) year.textContent = new Date().getFullYear();
 
+let dockThreshold = heroSection ? heroSection.offsetTop + heroSection.offsetHeight * 0.62 : 520;
+
 const updateHeader = () => {
   siteHeader?.classList.toggle("is-scrolled", window.scrollY > 18);
+  systemDock?.classList.toggle("is-visible", window.scrollY > dockThreshold);
 };
 
 updateHeader();
 window.addEventListener("scroll", updateHeader, { passive: true });
+window.addEventListener("resize", () => {
+  dockThreshold = heroSection ? heroSection.offsetTop + heroSection.offsetHeight * 0.62 : 520;
+  updateHeader();
+}, { passive: true });
 
 const syncMenuAccessibility = () => {
   if (!navLinks) return;
@@ -297,6 +323,88 @@ const observedSections = sectionLinks
   .map((link) => document.querySelector(link.getAttribute("href")))
   .filter(Boolean);
 
+const sectionDomains = {
+  work: "web",
+  automation: "bots",
+  "open-source": "network",
+  about: "linux",
+  contact: "linux"
+};
+
+let activeSectionId = "";
+
+const getDomainLabel = (domain) => {
+  const node = mapNodes.find((item) => item.dataset.domain === domain);
+  return node?.querySelector("span")?.textContent?.trim() || "";
+};
+
+const updateMapStatus = (domain, mode = "active") => {
+  if (!mapStatusCopy) return;
+  const label = getDomainLabel(domain);
+  if (!label) {
+    mapStatusCopy.textContent = document.documentElement.lang === "fa"
+      ? "برای مشاهده یک حوزه را انتخاب کنید"
+      : "Choose a domain to explore";
+    return;
+  }
+
+  const isPersian = document.documentElement.lang === "fa";
+  const state = mode === "preview"
+    ? (isPersian ? "مشاهدهٔ بخش" : "OPEN SECTION")
+    : (isPersian ? "مسیر فعال" : "ACTIVE ROUTE");
+  mapStatusCopy.textContent = `${label} · ${state}`;
+};
+
+const setActiveDomain = (sectionId) => {
+  activeSectionId = sectionId || activeSectionId;
+  const domain = sectionDomains[activeSectionId];
+
+  if (signalMap) {
+    if (domain) signalMap.dataset.activeDomain = domain;
+    else delete signalMap.dataset.activeDomain;
+  }
+
+  mapNodes.forEach((node) => {
+    const isActive = node.dataset.domain === domain;
+    node.classList.toggle("is-active", isActive);
+    if (isActive) node.setAttribute("aria-current", "location");
+    else node.removeAttribute("aria-current");
+  });
+
+  mapRoutes.forEach((route) => route.classList.toggle("is-active", route.dataset.domain === domain));
+  dockLinks.forEach((link) => {
+    const isActive = link.dataset.domain === domain;
+    link.classList.toggle("is-active", isActive);
+    if (isActive) link.setAttribute("aria-current", "location");
+    else link.removeAttribute("aria-current");
+  });
+
+  updateMapStatus(domain);
+};
+
+const previewDomain = (domain) => {
+  if (!signalMap || !domain) return;
+  signalMap.classList.add("is-previewing");
+  mapNodes.forEach((node) => node.classList.toggle("is-focused", node.dataset.domain === domain));
+  mapRoutes.forEach((route) => route.classList.toggle("is-focused", route.dataset.domain === domain));
+  updateMapStatus(domain, "preview");
+};
+
+const clearDomainPreview = () => {
+  signalMap?.classList.remove("is-previewing");
+  [...mapNodes, ...mapRoutes].forEach((item) => item.classList.remove("is-focused"));
+  updateMapStatus(sectionDomains[activeSectionId]);
+};
+
+mapNodes.forEach((node) => {
+  node.addEventListener("pointerenter", () => previewDomain(node.dataset.domain));
+  node.addEventListener("focus", () => previewDomain(node.dataset.domain));
+  node.addEventListener("blur", clearDomainPreview);
+});
+
+signalMap?.addEventListener("pointerleave", clearDomainPreview);
+document.addEventListener("portfolio:languagechange", () => setActiveDomain(activeSectionId));
+
 if ("IntersectionObserver" in window && observedSections.length) {
   const sectionObserver = new IntersectionObserver(
     (entries) => {
@@ -311,6 +419,7 @@ if ("IntersectionObserver" in window && observedSections.length) {
         if (isCurrent) link.setAttribute("aria-current", "true");
         else link.removeAttribute("aria-current");
       });
+      setActiveDomain(visible.target.id);
     },
     { rootMargin: "-30% 0px -55%", threshold: [0, 0.15, 0.4] }
   );

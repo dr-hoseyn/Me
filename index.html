@@ -47,7 +47,7 @@
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Manrope:wght@400;500;600;700&amp;family=Syne:wght@500;600;700&amp;family=Vazirmatn:wght@400;500;600;700&amp;display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css?v=14" />
+    <link rel="stylesheet" href="style.css?v=15" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -105,6 +105,16 @@
       </nav>
     </header>
 
+    <nav class="system-dock" aria-label="Capability navigation" data-i18n-aria="mapNavigation">
+      <p class="system-dock-label"><i aria-hidden="true"></i><span data-i18n="mapLive">Live system map</span></p>
+      <div class="system-dock-links">
+        <a href="#work" data-domain="web"><small>01</small><span data-i18n="dockProduct">Product</span></a>
+        <a href="#automation" data-domain="bots"><small>02</small><span data-i18n="dockAutomation">Automation</span></a>
+        <a href="#open-source" data-domain="network"><small>03</small><span data-i18n="dockOpenSource">Open source</span></a>
+        <a href="#about" data-domain="linux"><small>04</small><span data-i18n="dockAbout">About</span></a>
+      </div>
+    </nav>
+
     <main id="main">
       <section class="hero" id="top" aria-labelledby="hero-title">
         <div class="hero-ambient" aria-hidden="true"></div>
@@ -145,44 +155,44 @@
           </div>
         </div>
 
-        <div class="signal-map" role="img" aria-label="A map of Hossein’s product areas">
+        <nav class="signal-map" aria-label="Interactive map of Hossein’s product areas" data-i18n-aria="mapNavigation">
           <div class="map-grid" aria-hidden="true"></div>
-          <div class="map-header" aria-hidden="true"><span data-i18n="mapNetwork">CAPABILITY NETWORK</span><span data-i18n="mapDomains">04 CONNECTED DOMAINS</span></div>
+          <div class="map-header" aria-hidden="true"><span data-i18n="mapNetwork">CAPABILITY NETWORK</span><span data-i18n="mapHint">SELECT A DOMAIN</span></div>
           <div class="map-orbit orbit-one" aria-hidden="true"></div>
           <div class="map-orbit orbit-two" aria-hidden="true"></div>
           <svg class="map-lines" viewBox="0 0 600 570" aria-hidden="true" preserveAspectRatio="none">
             <g class="route-base">
-              <path d="M282 270 C248 246 256 130 166 130" />
-              <path d="M318 270 C352 246 344 130 434 130" />
-              <path d="M282 300 C248 324 256 440 166 440" />
-              <path d="M318 300 C352 324 344 440 434 440" />
+              <path class="map-route" data-domain="web" d="M282 270 C248 246 256 130 166 130" />
+              <path class="map-route" data-domain="bots" d="M318 270 C352 246 344 130 434 130" />
+              <path class="map-route" data-domain="linux" d="M282 300 C248 324 256 440 166 440" />
+              <path class="map-route" data-domain="network" d="M318 300 C352 324 344 440 434 440" />
             </g>
             <g class="route-signal">
-              <path d="M282 270 C248 246 256 130 166 130" />
-              <path d="M318 270 C352 246 344 130 434 130" />
-              <path d="M282 300 C248 324 256 440 166 440" />
-              <path d="M318 300 C352 324 344 440 434 440" />
+              <path class="map-route" data-domain="web" d="M282 270 C248 246 256 130 166 130" />
+              <path class="map-route" data-domain="bots" d="M318 270 C352 246 344 130 434 130" />
+              <path class="map-route" data-domain="linux" d="M282 300 C248 324 256 440 166 440" />
+              <path class="map-route" data-domain="network" d="M318 300 C352 324 344 440 434 440" />
             </g>
             <g class="route-endpoints">
-              <circle cx="166" cy="130" r="5" /><circle cx="166" cy="130" r="2" />
-              <circle cx="434" cy="130" r="5" /><circle cx="434" cy="130" r="2" />
-              <circle cx="166" cy="440" r="5" /><circle cx="166" cy="440" r="2" />
-              <circle cx="434" cy="440" r="5" /><circle cx="434" cy="440" r="2" />
+              <g class="map-endpoint" data-domain="web"><circle class="endpoint-halo" cx="166" cy="130" r="5" /><circle class="endpoint-core" cx="166" cy="130" r="2" /></g>
+              <g class="map-endpoint" data-domain="bots"><circle class="endpoint-halo" cx="434" cy="130" r="5" /><circle class="endpoint-core" cx="434" cy="130" r="2" /></g>
+              <g class="map-endpoint" data-domain="linux"><circle class="endpoint-halo" cx="166" cy="440" r="5" /><circle class="endpoint-core" cx="166" cy="440" r="2" /></g>
+              <g class="map-endpoint" data-domain="network"><circle class="endpoint-halo" cx="434" cy="440" r="5" /><circle class="endpoint-core" cx="434" cy="440" r="2" /></g>
             </g>
           </svg>
           <div class="map-core">
             <span class="map-core-mark">HH</span>
             <div class="map-core-copy"><small data-i18n="mapCore">SYSTEM CORE</small><b data-i18n="mapBuild">BUILD / SHIP / RUN</b></div>
           </div>
-          <div class="map-node node-web"><i></i><span data-i18n="mapWeb">WEB PRODUCTS</span><small>PANA · ToolGrym</small></div>
-          <div class="map-node node-bots"><i></i><span data-i18n="mapBots">BOT SYSTEMS</span><small data-i18n="mapBotSub">Sales · Resellers</small></div>
-          <div class="map-node node-linux"><i></i><span data-i18n="mapLinux">LINUX OPS</span><small data-i18n="mapLinuxSub">Deploy · Automate</small></div>
-          <div class="map-node node-network"><i></i><span data-i18n="mapNetworkTools">NETWORK TOOLS</span><small data-i18n="mapNetworkSub">Tunnels · Control</small></div>
+          <a class="map-node node-web" href="#work" data-domain="web" aria-label="Explore web products" data-i18n-aria="mapWebLink"><i></i><span data-i18n="mapWeb">WEB PRODUCTS</span><small>PANA · ToolGrym</small></a>
+          <a class="map-node node-bots" href="#automation" data-domain="bots" aria-label="Explore bot systems" data-i18n-aria="mapBotsLink"><i></i><span data-i18n="mapBots">BOT SYSTEMS</span><small data-i18n="mapBotSub">Sales · Resellers</small></a>
+          <a class="map-node node-linux" href="#about" data-domain="linux" aria-label="Explore Linux operations experience" data-i18n-aria="mapLinuxLink"><i></i><span data-i18n="mapLinux">LINUX OPS</span><small data-i18n="mapLinuxSub">Deploy · Automate</small></a>
+          <a class="map-node node-network" href="#open-source" data-domain="network" aria-label="Explore open-source network tools" data-i18n-aria="mapNetworkLink"><i></i><span data-i18n="mapNetworkTools">NETWORK TOOLS</span><small data-i18n="mapNetworkSub">Tunnels · Control</small></a>
           <div class="map-footer">
             <p class="map-label" data-i18n="mapLabel">SYSTEM / CAPABILITY MAP</p>
-            <p class="map-status" data-i18n="mapStatus"><span></span> Systems online</p>
+            <p class="map-status"><i aria-hidden="true"></i><span class="map-status-copy" data-i18n="mapNavigate">Choose a domain to explore</span></p>
           </div>
-        </div>
+        </nav>
       </section>
 
       <section class="section work-section" id="work" aria-labelledby="work-title">
@@ -471,6 +481,6 @@
       <p>© <span id="year"></span> · <span data-i18n="tabrizIran">Tabriz, Iran</span></p>
     </footer>
 
-    <script src="script.js?v=8" defer></script>
+    <script src="script.js?v=9" defer></script>
   </body>
 </html>
