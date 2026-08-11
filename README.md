@@ -22,6 +22,8 @@ The visual system pairs a precise, editorial layout with network-topology detail
 - Body type: Manrope
 - Utility/data type: IBM Plex Mono
 - Deep graphite surfaces with one restrained mineral-blue accent
+- Dark-first theme with a cool mineral light mode and a restrained sunset accent
+- Complete English/Persian language switch with responsive RTL layouts
 - Asymmetric project and open-source grids with compact technical metadata
 - Responsive from small mobile screens to wide desktops
 - Reduced-motion support and visible keyboard focus states

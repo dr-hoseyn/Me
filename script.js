@@ -1,3 +1,234 @@
+const translations = {
+  fa: {
+    skip: "رفتن به محتوای اصلی",
+    name: "حسین حاتمی",
+    roleShort: "مهندس نرم‌افزار",
+    navWork: "پروژه‌ها",
+    navAutomation: "اتوماسیون",
+    navOpenSource: "متن‌باز",
+    navAbout: "درباره من",
+    navContact: "ارتباط",
+    letsTalk: "گفت‌وگو کنیم",
+    availability: "<span></span> آمادهٔ همکاری در پروژه‌های منتخب",
+    heroPosition: "مهندس نرم‌افزار · محصول و زیرساخت",
+    heroTitle: "<span>مهندس نرم‌افزار</span><em>+ سازندهٔ محصول.</em>",
+    heroScope: "محصولات وب. سامانه‌های تلگرام. ابزارهای شبکه.",
+    heroIntro: "من حسین حاتمی هستم. وب‌سایت، ربات‌های تجاری و ابزارهای لینوکس و شبکه را از رابط کاربری تا استقرار طراحی و اجرا می‌کنم.",
+    seeWork: "دیدن پروژه‌های منتخب",
+    disciplineWeb: "محصول وب",
+    disciplineAutomation: "اتوماسیون",
+    disciplineInfrastructure: "زیرساخت",
+    mapNetwork: "شبکهٔ توانمندی‌ها",
+    mapDomains: "۰۴ حوزهٔ متصل",
+    mapCore: "هستهٔ سیستم",
+    mapBuild: "ساخت / انتشار / اجرا",
+    mapWeb: "محصولات وب",
+    mapBots: "سامانه‌های رباتی",
+    mapBotSub: "فروش · نمایندگان",
+    mapLinux: "عملیات لینوکس",
+    mapLinuxSub: "استقرار · خودکارسازی",
+    mapNetworkTools: "ابزارهای شبکه",
+    mapNetworkSub: "تونل · کنترل",
+    mapLabel: "نقشهٔ سیستم / توانمندی",
+    mapStatus: "<span></span> سیستم‌ها آنلاین‌اند",
+    workLabel: "پروژه‌های منتخب <span>/ محصولات فعال</span>",
+    workTitle: "برای آدم‌های واقعی ساخته شده؛<br><em>در محیط واقعی در حال اجراست.</em>",
+    workIntro: "دو محصول متفاوت که هرکدام متناسب با مخاطب، کسب‌وکار و کاری که باید انجام دهند شکل گرفته‌اند.",
+    panaType: "۰۱ / وب‌سایت فعال",
+    toolType: "۰۲ / محصول فعال",
+    production: "در حال بهره‌برداری",
+    panaDescription: "تجربه‌ای دوزبانه برای برند بستنی دست‌ساز PANA در اهواز؛ شامل منو، گالری، موقعیت، اعتبار اجتماعی و ارائه‌ای دقیق با اولویت موبایل.",
+    toolDescription: "پلتفرم محاسبه‌گرهای مالی با تمرکز بر حریم خصوصی که همهٔ فرمول‌ها و مثال‌های حل‌شده را برای وام، پس‌انداز، بازنشستگی، درآمد و مالیات آمریکا نمایش می‌دهد.",
+    factRole: "نقش",
+    factScope: "دامنه",
+    factStatus: "وضعیت",
+    panaRole: "طراحی و توسعه",
+    panaScope: "سایت دوزبانهٔ برند",
+    toolRole: "مهندسی محصول",
+    toolScope: "ابزارهای مالی",
+    liveMaintained: "فعال و نگهداری‌شده",
+    liveEvolving: "فعال و در حال توسعه",
+    visitSite: "مشاهدهٔ سایت",
+    useTool: "استفاده از ToolGrym",
+    automationLabel: "تلگرام <span>/ تجارت و اتوماسیون</span>",
+    automationTitle: "ربات‌هایی که مانند<br><em>یک محصول کامل طراحی شده‌اند.</em>",
+    automationIntro: "نه چند فرمان نمایشی؛ بلکه سیستم‌های عملیاتی با فرایند فروش، مدیریت، قیمت‌گذاری و ابزارهای پشتیبانی.",
+    topologyCaption: "یک سیستم تجاری / سه لایهٔ محصول",
+    topologyStore: "ویترین مشتری",
+    topologyPartner: "کانال نمایندگان",
+    topologyControl: "لایهٔ کنترل",
+    teliroDescription: "فروشگاهی تلگرامی برای خدمات دیجیتال که حول مسیر خرید روشن و عملیات روزمرهٔ فروش ساخته شده است.",
+    teliroFeature1: "کاتالوگ محصول و سفارش‌ها",
+    teliroFeature2: "فرایند پرداخت و تحویل",
+    teliroFeature3: "ابزارهای مدیریتی عملیات‌محور",
+    openTelegram: "بازکردن در تلگرام",
+    v2rayTitle: "فروش نمایندگان V2Ray",
+    v2rayDescription: "ربات خرید اختصاصی برای نمایندگان V2Ray که سفارش کانفیگ را سریع و تکرارپذیر می‌کند.",
+    v2rayFeature1: "مسیر خرید نماینده",
+    v2rayFeature2: "تحویل کانفیگ",
+    v2rayFeature3: "کانال‌های فروش و پشتیبانی",
+    productSystem: "سیستم محصول",
+    gemionTitle: "کنترل چندمستاجری نمایندگان",
+    gemionDescription: "پلتفرمی هدایت‌شده که فروشگاه‌های جداگانهٔ تلگرامی را به یک شبکهٔ فروش قابل مدیریت تبدیل می‌کند.",
+    gemionFeature1: "راه‌اندازی ربات در شش گام",
+    gemionFeature2: "قیمت‌گذاری و حاشیه سود زنده",
+    gemionFeature3: "کنترل اعتبار، کاتالوگ و نقش‌ها",
+    privateWork: "محصول خصوصی در حال بهره‌برداری",
+    sourceLabel: "گیت‌هاب <span>/ مهندسی متن‌باز</span>",
+    sourceTitle: "زیرساختی که<br><em>راه‌اندازی‌اش ساده‌تر است.</em>",
+    allRepos: "همهٔ مخزن‌ها",
+    repoTunnelPanel: "صفحهٔ کنترل مرکزی و عامل‌های Go برای ایجاد، پایش و عیب‌یابی تونل‌ها روی چند سرور VPS.",
+    repoWaterwall: "ابزار تک‌فایلی و ایمنی‌محور برای مدیریت اعتبارسنجی‌شده، اتمیک، محلی و راه‌دور تونل‌های WaterWall.",
+    repoTunnelManager: "پنل تعاملی خط فرمان برای نصب و مدیریت چرخهٔ عمر تونل Backhaul روی یک سرور.",
+    repoVmTuner: "تنظیم تکرارپذیر شبکهٔ لینوکس برای ماشین‌های مجازی در قالب یک روند عملی خط فرمان.",
+    repoBifrost: "نصب‌کننده‌ای متمرکز که کارهای تکراری راه‌اندازی پشتهٔ شبکهٔ Bifrost را حذف می‌کند.",
+    repoExam: "محصول آزمون مرورگرمحور و منتشرشده با معماری سبک Serverless.",
+    aboutLabel: "درباره من <span>/ انسان پشت سیستم‌ها</span>",
+    aboutTitle: "به رابط کاربری و آنچه سیستم را زنده نگه می‌دارد، به یک اندازه علاقه‌مندم.",
+    aboutIntro: "مسیر من میان مهندسی نرم‌افزار، شبکه، لینوکس و تولید بصری حرکت می‌کند. این گستره کمک می‌کند محصولی کامل بسازم: تجربه را شکل بدهم، سیستم را پیاده کنم و عملیات آن را بفهمم.",
+    locationRole: "مهندس نرم‌افزار · تبریز، ایران",
+    experience: "تجربه",
+    experiencePath: "طراحی ← وب ← شبکه",
+    visualProduction: "تولید بصری",
+    thumbnailDesigner: "طراح کاور ویدئو",
+    webExperience: "تجربهٔ وب",
+    websiteDesigner: "طراح وب‌سایت",
+    networkOperations: "عملیات شبکه",
+    networkManager: "مدیر شبکه",
+    education: "تحصیلات",
+    current: "در حال تحصیل",
+    completed: "تمام‌شده",
+    foundation: "پایه",
+    bsc: "کارشناسی مهندسی حرفه‌ای نرم‌افزار",
+    associate: "کاردانی مهندسی نرم‌افزار",
+    diploma: "دیپلم نرم‌افزار",
+    toolkit: "ابزارهای کاری",
+    groupedPractice: "دسته‌بندی‌شده بر اساس تخصص",
+    frontend: "فرانت‌اند",
+    backend: "بک‌اند",
+    infrastructure: "زیرساخت",
+    networking: "شبکه",
+    tools: "ابزارها",
+    contactLabel: "شروع یک گفت‌وگو",
+    contactTitle: "چیز مفیدی برای<br>ساختن دارید؟",
+    contactIntro: "برای همکاری در پروژه‌های محصول، اتوماسیون و زیرساخت که اجرای دقیق در آن‌ها اهمیت دارد آماده‌ام.",
+    messageTelegram: "پیام در تلگرام",
+    followGitHub: "دنبال‌کردن در گیت‌هاب",
+    contactNote: "مستقر در تبریز، ایران · فعال در محصول و زیرساخت",
+    footerDisciplines: "مهندسی نرم‌افزار · سیستم‌های محصول · ابزارهای شبکه",
+    tabrizIran: "تبریز، ایران",
+    loadingPreview: "در حال بارگذاری وب‌سایت…",
+    livePreview: "<i></i> پیش‌نمایش تعاملی زنده",
+    openFullSite: "بازکردن سایت کامل ↗",
+    primaryNav: "ناوبری اصلی",
+    brandHome: "صفحهٔ اصلی حسین حاتمی",
+    menuToggle: "باز و بسته‌کردن منوی ناوبری",
+    topologyAria: "لایه‌های محصولات تلگرامی",
+    profileAlt: "حسین حاتمی در برابر آسمان غروب",
+    panaPreviewAlt: "پیش‌نمایش وب‌سایت بستنی PANA",
+    toolPreviewAlt: "پیش‌نمایش وب‌سایت ToolGrym",
+    panaFrameTitle: "پیش‌نمایش تعاملی PANA Gelato",
+    toolFrameTitle: "پیش‌نمایش تعاملی ToolGrym",
+    profileSilhouetteAlt: "نمای ضدنور حسین حاتمی در برابر آسمان غروب"
+  }
+};
+
+const languageToggle = document.querySelector(".language-toggle");
+const themeToggle = document.querySelector(".theme-toggle");
+const themeMeta = document.querySelector('meta[name="theme-color"]');
+const translatableElements = [...document.querySelectorAll("[data-i18n]")];
+const translatableAria = [...document.querySelectorAll("[data-i18n-aria]")];
+const translatableAlt = [...document.querySelectorAll("[data-i18n-alt]")];
+const translatableTitle = [...document.querySelectorAll("[data-i18n-title]")];
+
+translatableElements.forEach((element) => {
+  element.dataset.i18nEnglish = element.innerHTML;
+});
+
+translatableAria.forEach((element) => {
+  element.dataset.i18nEnglishAria = element.getAttribute("aria-label") || "";
+});
+
+translatableAlt.forEach((element) => {
+  element.dataset.i18nEnglishAlt = element.getAttribute("alt") || "";
+});
+
+translatableTitle.forEach((element) => {
+  element.dataset.i18nEnglishTitle = element.getAttribute("title") || "";
+});
+
+const updateThemeControl = () => {
+  if (!themeToggle) return;
+  const isLight = document.documentElement.dataset.theme === "light";
+  const isPersian = document.documentElement.lang === "fa";
+  themeToggle.innerHTML = `<span aria-hidden="true">${isLight ? "☾" : "☀"}</span>`;
+  themeToggle.setAttribute(
+    "aria-label",
+    isPersian ? (isLight ? "تغییر به حالت تیره" : "تغییر به حالت روشن") : (isLight ? "Switch to dark mode" : "Switch to light mode")
+  );
+  themeMeta?.setAttribute("content", isLight ? "#eef3f8" : "#0b0d10");
+};
+
+const applyLanguage = (language, persist = true) => {
+  const nextLanguage = language === "fa" ? "fa" : "en";
+  const isPersian = nextLanguage === "fa";
+  document.documentElement.lang = nextLanguage;
+  document.documentElement.dir = isPersian ? "rtl" : "ltr";
+
+  translatableElements.forEach((element) => {
+    const key = element.dataset.i18n;
+    element.innerHTML = isPersian && translations.fa[key] ? translations.fa[key] : element.dataset.i18nEnglish;
+  });
+
+  translatableAria.forEach((element) => {
+    const key = element.dataset.i18nAria;
+    element.setAttribute("aria-label", isPersian && translations.fa[key] ? translations.fa[key] : element.dataset.i18nEnglishAria);
+  });
+
+  translatableAlt.forEach((element) => {
+    const key = element.dataset.i18nAlt;
+    element.setAttribute("alt", isPersian && translations.fa[key] ? translations.fa[key] : element.dataset.i18nEnglishAlt);
+  });
+
+  translatableTitle.forEach((element) => {
+    const key = element.dataset.i18nTitle;
+    element.setAttribute("title", isPersian && translations.fa[key] ? translations.fa[key] : element.dataset.i18nEnglishTitle);
+  });
+
+  if (languageToggle) {
+    languageToggle.textContent = isPersian ? "EN" : "FA";
+    languageToggle.setAttribute("aria-label", isPersian ? "Switch to English" : "نمایش نسخه فارسی");
+  }
+
+  document.title = isPersian ? "حسین حاتمی — مهندس نرم‌افزار و سازنده محصول" : "Hossein Hatami — Software Engineer & Product Builder";
+  document.querySelector('meta[name="description"]')?.setAttribute(
+    "content",
+    isPersian
+      ? "حسین حاتمی محصولات وب، سامانه‌های تجاری تلگرام و ابزارهای متن‌باز زیرساخت شبکه می‌سازد."
+      : "Hossein Hatami builds web products, Telegram commerce systems, and open-source network infrastructure tools."
+  );
+  if (persist) {
+    try { localStorage.setItem("portfolio-language", nextLanguage); } catch (_) {}
+  }
+  updateThemeControl();
+};
+
+languageToggle?.addEventListener("click", () => {
+  applyLanguage(document.documentElement.lang === "fa" ? "en" : "fa");
+});
+
+themeToggle?.addEventListener("click", () => {
+  const nextTheme = document.documentElement.dataset.theme === "light" ? "dark" : "light";
+  document.documentElement.dataset.theme = nextTheme;
+  try { localStorage.setItem("portfolio-theme", nextTheme); } catch (_) {}
+  updateThemeControl();
+});
+
+let savedLanguage = "en";
+try { savedLanguage = localStorage.getItem("portfolio-language") || "en"; } catch (_) {}
+applyLanguage(savedLanguage, false);
+updateThemeControl();
+
 const navToggle = document.querySelector(".nav-toggle");
 const navLinks = document.querySelector(".nav-links");
 const siteHeader = document.querySelector(".site-header");
