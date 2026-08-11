@@ -612,6 +612,32 @@ svg {
   font-weight: 500;
 }
 
+@media (min-width: 1121px) {
+  .hero {
+    padding-top: clamp(2rem, 2.5vw, 3rem);
+  }
+
+  .hero-meta {
+    max-width: 44rem;
+    margin-top: clamp(2.5rem, 4vw, 3.5rem);
+  }
+
+  .hero-meta span {
+    gap: 0.65rem;
+    min-height: 5.4rem;
+    padding: 1.15rem 1rem 0.25rem 0;
+    color: var(--muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+    line-height: 1.45;
+  }
+
+  .hero-meta b {
+    font-size: 0.65rem;
+    font-weight: 600;
+  }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .hero-copy > * {
     animation: hero-enter 720ms var(--ease-out) both;
@@ -1561,9 +1587,9 @@ svg {
 
 .topology-track {
   position: absolute;
-  right: 9%;
+  right: 16.666%;
   bottom: 2.2rem;
-  left: 9%;
+  left: 16.666%;
   height: 1px;
   background: linear-gradient(90deg, var(--accent), rgba(139, 184, 255, 0.16), var(--accent));
 }
@@ -1593,12 +1619,11 @@ svg {
 .topology-nodes > div {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.65rem;
   color: var(--text-soft);
+  text-align: center;
 }
-
-.topology-nodes > div:nth-child(2) { justify-content: center; }
-.topology-nodes > div:nth-child(3) { justify-content: flex-end; }
 
 .topology-nodes small {
   color: var(--accent);
@@ -3250,6 +3275,7 @@ html[data-theme="light"] .button-light:hover {
   .topology-nodes > div {
     display: grid;
     gap: 0.25rem;
+    justify-items: center;
   }
 
   .topology-nodes strong {
